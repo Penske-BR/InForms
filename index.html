@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Avarias</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <h1 id="Titulo">Formulário de avarias</h1>
+    <form>
+        
+        <label for="QuestãoMaterial" id="QuestãoMaterial">
+            <span class="Pergunta">Qual é o material da caixa?</span>
+
+            <input class="checkboxs" id="CheckBoxCaixaDePapelao" type="radio" name="testeDeOpcao" value="Caixa de papelão">
+            <span class="RespostasDoCheck">Papelão</span>
+            </input>
+
+            <input class="checkboxs" id="CheckBoxCaixaDeMadeira" type="radio" name="testeDeOpcao" value="Caixa de madeira">
+            <span class="RespostasDoCheck">Madeira</span>
+            </input>
+
+            <input class="checkboxs" id="CheckBoxSemCaixa" type="radio" name="testeDeOpcao" value="Sem caixa">
+            <span class="RespostasDoCheck">Não tem caixa</span>
+            </input>
+        </label>
+    </form>
+
+    <div><button id="MyButton" onclick="generatePDF()">Baixar relatório</button></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" referrerpolicy="no-referrer"></script>
+
+    <script src="index.js">
+    </script>
+
+</body>
+</html>
