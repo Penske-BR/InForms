@@ -24,8 +24,6 @@ form{
 }
 #QuestãoMaterial{
     position: relative;
-    width: 60vh;
-    max-width: 60%;
     height: 30vh;
     background-color: #E1E5E8;
     display: inline-flex;
@@ -76,4 +74,20 @@ button{
 }
 button:hover{
     cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    #QuestãoMaterial{
+        width: 80%;
+    }
+}
+@media (min-width: 601px) and (max-width: 1200px) {
+    #QuestãoMaterial{
+        width: 60%;
+    }
+}
+@media (min-width: 1201px){
+    #QuestãoMaterial{
+        width: 50%;
+    }
 }
