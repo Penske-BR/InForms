@@ -24,7 +24,8 @@ form{
 }
 #QuestãoMaterial{
     position: relative;
-    width: 60vh;
+    width: 100vh;
+    max-width: 80%;
     height: 30vh;
     background-color: #E1E5E8;
     display: inline-flex;
