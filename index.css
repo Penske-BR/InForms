@@ -83,7 +83,7 @@ button:hover{
 }
 @media (min-width: 601px) and (max-width: 1200px) {
     #QuestãoMaterial{
-        width: 60%;
+        width: 80%;
     }
 }
 @media (min-width: 1201px){
