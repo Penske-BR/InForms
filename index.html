@@ -12,42 +12,63 @@
 <body>
 
     <h1 id="Titulo">Formulário de avarias</h1>
+    ''
     <form>
-        
-        <label for="QuestãoMaterial" id="QuestãoMaterial" class="CaixaDePergunta">
-            <span class="Pergunta">Qual é o material da caixa?</span>
+        <label for="QuestaoNumero" id="QuestaoNumero" class="CaixaDePergunta">
+            <span class="Pergunta">Qual é o número de série e de agrupador?
+            </span>
 
             <div class="centralizarAlternativasFlex">
 
-                <div class="AgrupadorDasOpcoes"><input class="checkboxs" id="CheckBoxCaixaDePapelao" type="radio" name="testeDeOpcao" value="Caixa de papelão">Papelão</div>
+                <div class="AgrupadorDasOpcoes">
+                    <input class="TextCheckbox" id="SerieCaixaDeTexto" type="text" name="InputDeSerie" placeholder="Série"></div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="CheckBoxCaixaDeMadeira" type="radio" name="testeDeOpcao" value="Caixa de madeira">
-                    Madeira
+                    <input class="TextCheckbox" id="AgrupadorCaixaDeTexto" type="text" name="InputDeAgrupador" placeholder="Agrupador">
+                    
                 </div>
-
-                <div class="AgrupadorDasOpcoes"><input class="checkboxs" id="CheckBoxPallet" type="radio" name="testeDeOpcao" value="Pallet">Pallet</div>
 
             </div>
         </label>
 
-        <label for="QuestãoMaterial" id="QuestãoMaterial" class="CaixaDePergunta">
+        <label for="QuestaoMaterial" id="QuestaoMaterial" class="CaixaDePergunta">
             <span class="Pergunta">Qual é o material da caixa?</span>
 
             <div class="centralizarAlternativasFlex">
 
-                <div class="AgrupadorDasOpcoes"><input class="checkboxs" id="CheckBoxCaixaDePapelao" type="radio" name="testeDeOpcao" value="Caixa de papelão">Papelão</div>
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="CheckBoxCaixaDePapelao" type="radio" name="OpcaoPapelao" value="Caixa de papelão">Papelão</div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="CheckBoxCaixaDeMadeira" type="radio" name="testeDeOpcao" value="Caixa de madeira">
+                    <input class="checkboxs" id="CheckBoxCaixaDeMadeira" type="radio" name="OpcaoMadeira" value="Caixa de madeira">
                     Madeira
                 </div>
 
-                <div class="AgrupadorDasOpcoes"><input class="checkboxs" id="CheckBoxPallet" type="radio" name="testeDeOpcao" value="Pallet">Pallet</div>
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="CheckBoxPallet" type="radio" name="OpcaoPallet" value="Pallet">Pallet</div>
 
             </div>
         </label>
-        
+
+        <label for="QuestaoAcao" id="QuestaoAcao" class="CaixaDePergunta">
+            <span class="Pergunta">Qual foi a ação da Jaguar?</span>
+
+            <div class="centralizarAlternativasFlex">
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="TrocarEmbalagem" type="radio" name="testeDeOpcao" value="Trocar de embalagem">Trocar embalagem</div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="RepararEmbalagem" type="radio" name="testeDeOpcao" value="Reparar embalagem">
+                    Reparar embalagem
+                </div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="SeguirDanificada" type="radio" name="testeDeOpcao" value="Seguir danificada">Seguir danificada</div>
+
+            </div>
+        </label>
+
     </form>
 
     <div id="centralizarButtonFlex"><button id="MyButton" onclick="generatePDF()">Baixar relatório</button></div>

@@ -13,6 +13,21 @@ function generatePDF() {
 
     var text = ""
 
+    //Número de série/agrupador
+    if(document.getElementById("SerieCaixaDeTexto") != ""){
+        text += document.getElementById("SerieCaixaDeTexto").value + "\n"
+    }else{
+        alert("Preencha o número de série!")
+        return
+    }
+    if(document.getElementById("AgrupadorCaixaDeTexto") != ""){
+        text += document.getElementById("AgrupadorCaixaDeTexto").value + "\n"
+    }else{
+        alert("Preencha o número de agrupador!")
+        return
+    }
+
+    //Material da caixa
     if(document.getElementById("CheckBoxCaixaDePapelao").checked){
         text += document.getElementById("CheckBoxCaixaDePapelao").value + "\n"
     }
@@ -23,10 +38,22 @@ function generatePDF() {
         text += document.getElementById("CheckBoxPallet").value + "\n"
     }
     else{
-        alert("Marque o material da caixa.")
+        alert("Marque o material da caixa!")
         return
     }
 
+    //Ação da Jaguar
+
+    if(document.getElementById("TrocarEmbalagem").checked){
+        text += document.getElementById("TrocarEmbalagem").value
+    }else if(document.getElementById("RepararEmbalagem")){
+        text += document.getElementById("RepararEmbalagem").value
+    }else if(document.getElementById("SeguirDanificada").checked){
+        text += document.getElementById("SeguirDanificada").value
+    }
+    else{
+        alert("Marque a ação da Jaguar!")
+    }
     EffectButton()
     
     const jsPDF = window.jspdf.jsPDF;    
