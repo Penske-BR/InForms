@@ -113,12 +113,7 @@ button:hover{
     cursor: pointer;
 }
 
-@media (max-width: 600px) {
-    .CaixaDePergunta{
-        width: 80%;
-    }
-}
-@media (min-width: 601px) and (max-width: 1200px) {
+@media (max-width: 1200px) {
     .CaixaDePergunta{
         width: 80%;
     }
