@@ -11,28 +11,38 @@
 </head>
 <body>
 
-    <h1 id="Titulo">Formulário de avarias</h1>
-    ''
+    <h1 id="Titulo">Formulário de não conformidades</h1>
+    
     <form>
         <label for="QuestaoNumero" id="QuestaoNumero" class="CaixaDePergunta">
-            <span class="Pergunta">Qual é o número de série e de agrupador?
+            <span class="Pergunta">Digite o NF
             </span>
 
             <div class="centralizarAlternativasFlex">
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="SerieCaixaDeTexto" type="text" name="InputDeSerie" placeholder="Série"></div>
+                    <input class="TextCheckbox" id="NFCaixaDeTexto" type="number" name="InputDeNF" placeholder="NF..."></div>
+
+            </div>
+        </label>
+
+        <label for="QuestaoCidadeEstado" id="QuestaoCidadeEstado" class="CaixaDePergunta">
+            <span class="Pergunta">Digite a Cidade e o Estado.
+            </span>
+
+            <div class="centralizarAlternativasFlex">
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="AgrupadorCaixaDeTexto" type="text" name="InputDeAgrupador" placeholder="Agrupador">
-                    
-                </div>
+                    <input class="TextCheckbox" id="EstadoCampoDeTexto" type="text" name="InputDeEstado" placeholder="Estado..."></div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="TextCheckbox" id="CidadeCampoDeTexto" type="text" name="InputDeCidade" placeholder="Cidade..."></div>
 
             </div>
         </label>
 
         <label for="QuestaoMaterial" id="QuestaoMaterial" class="CaixaDePergunta">
-            <span class="Pergunta">Qual é o material da caixa?</span>
+            <span class="Pergunta">Material da caixa</span>
 
             <div class="centralizarAlternativasFlex">
 
@@ -50,8 +60,19 @@
             </div>
         </label>
 
+        <label for="QuestaoProblema" id="QuestaoProblema" class="CaixaDePergunta">
+            <span class="Pergunta">Descreva o problema</span>
+
+            <div class="centralizarAlternativasFlex">
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="TextCheckbox" id="ProblemaCampoDeTexto" type="text" name="ProblemaCampoDeTexto" placeholder="Problema..."></div>
+
+            </div>
+        </label>
+
         <label for="QuestaoAcao" id="QuestaoAcao" class="CaixaDePergunta">
-            <span class="Pergunta">Qual foi a ação da Jaguar?</span>
+            <span class="Pergunta">Ação tomada</span>
 
             <div class="centralizarAlternativasFlex">
 
@@ -67,6 +88,12 @@
                     <input class="checkboxs" id="SeguirDanificada" type="radio" name="testeDeOpcao" value="Seguir danificada">Seguir danificada</div>
 
             </div>
+        </label>
+
+        <label for="QuestaoArquivo" id="QuestaoArquivo" class="CaixaDePergunta">
+            <span class="Pergunta">Anexar foto</span>
+
+                    <input class="TextCheckbox" id="InputDeAnexarImagem" type="file" accept="image/*" name="InputDeAnexarFoto" multiple onchange="ExibirImagensNaTela(event)">
         </label>
 
     </form>
