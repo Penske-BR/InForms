@@ -53,7 +53,7 @@ function generatePDF() {
     var doc = new jsPDF({
         orientation: 'portrait',
         unit: "mm",
-        format: [297, 297] //x, y
+        format: [1008, 759] //x, y
     });
 
     // var ImagemAnexada = document.getElementsByClassName("ImagensAnexadas")
@@ -68,16 +68,16 @@ function generatePDF() {
     doc.setLineWidth(2)
 
     //Linha 1 horizontal (Margem)
-    doc.line(5, 5, 205, 5)
+    doc.line(5, 5, 754, 5)
 
     //Linha 1 vertical (Margem)
-    doc.line(5, 4, 5, 294)
+    doc.line(5, 4, 5, 1003)
 
     //Linha 2 horizontal (Margem)
-    doc.line(5, 293, 205, 293)
+    doc.line(5, 1003, 754, 1003)
 
     //Linha 2 vertical (Margem)
-    doc.line(204, 5, 205, 294)
+    doc.line(754, 5, 754, 1003)
 
     doc.addImage(LogoPenske, 5,0)
     doc.save("Test.pdf")
