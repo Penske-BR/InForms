@@ -51,8 +51,9 @@ function generatePDF() {
 
     const jsPDF = window.jspdf.jsPDF;    
     var doc = new jsPDF({
+        orientation: 'portrait',
         unit: "mm",
-        format: "a4"
+        format: [297, 297] //x, y
     });
 
     // var ImagemAnexada = document.getElementsByClassName("ImagensAnexadas")
