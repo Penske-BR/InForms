@@ -33,76 +33,52 @@ function RemoverImagens() {
 }
 
 function generatePDF() {
-
-    var text = ""
-
-    //Número de NF
-    if(document.getElementById("NFCaixaDeTexto").value != ""){
-        text += document.getElementById("NFCaixaDeTexto").value + "\n"
-    }else{
-        alert("Preencha o número de NF!")
-        return
-    }
-
-    //Estado e Cidade
-    if(document.getElementById("EstadoCampoDeTexto").value != ""){
-        text += document.getElementById("EstadoCampoDeTexto").value + "\n"
-    }
-    else{
-        alert("Preencha o campo de Estado!")
-        return
-    }
-    if(document.getElementById("CidadeCampoDeTexto").value != ""){
-        text += document.getElementById("CidadeCampoDeTexto").value + "\n"
-    }
-    else{
-        alert("Preencha o campo de Cidade!")
-        return
-    }
-
-    //Material da caixa
-    if(document.getElementById("CheckBoxCaixaDePapelao").checked){
-        text += document.getElementById("CheckBoxCaixaDePapelao").value + "\n"
-    }
-    else if(document.getElementById("CheckBoxCaixaDeMadeira").checked){
-        text += document.getElementById("CheckBoxCaixaDeMadeira").value + "\n"
-    }
-    else if(document.getElementById("CheckBoxPallet").checked){
-        text += document.getElementById("CheckBoxPallet").value + "\n"
-    }
-    else{
-        alert("Marque o material da caixa!")
-        return
-    }
-
-    //Descrever problema
-
-    if(document.getElementById("ProblemaCampoDeTexto").value != ""){
-        text += document.getElementById("ProblemaCampoDeTexto").value + "\n"
-    }else{
-        alert("Preencha o campo de problema!")
-        return
-    }
-
-    //Ação tomada
-
-    if(document.getElementById("TrocarEmbalagem").checked){
-        text += document.getElementById("TrocarEmbalagem").value + "\n"
-    }else if(document.getElementById("RepararEmbalagem")){
-        text += document.getElementById("RepararEmbalagem").value + "\n"
-    }else if(document.getElementById("SeguirDanificada").checked){
-        text += document.getElementById("SeguirDanificada").value + "\n"
-    }
-    else{
-        alert("Marque a ação da Jaguar!")
-    }
-
-    //Anexar imagem
-
     EffectButton()
+
+        let LogoPenske = "./Imgs/LogoPenske.png"
+
+        let DataAtual = new Date()
+        let dia = String(DataAtual.getDate()).padStart(2, "0")
+        let mes = String(DataAtual.getMonth() + 1).padStart(2, "0")
+        let ano = DataAtual.getFullYear()
+        let hora = String(DataAtual.getHours()).padStart(2, "0")
+        let minuto = String(DataAtual.getMinutes()).padStart(2, "0")
+
+        let DataFormatada = `${dia}/${mes}/${ano} - ${hora}:${minuto}`
+
+        let NF = document.getElementById("NFCaixaDeTexto")
     
+
     const jsPDF = window.jspdf.jsPDF;    
-    var doc = new jsPDF();
-    doc.text(text, 10, 10)
+    var doc = new jsPDF({
+        unit: "mm",
+        format: "a4"
+    });
+
+    // var ImagemAnexada = document.getElementsByClassName("ImagensAnexadas")
+    // Array.from(ImagemAnexada).forEach(Imagem => {
+    //     var imgData = Imagem.src
+    //     doc.addImage(imgData, "JPEG", 10, y, 50, 50)
+    //     y += 60
+    // });
+
+    //x1, y1, x2, y2
+
+    doc.setLineWidth(2)
+
+    //Linha 1 horizontal (Margem)
+    doc.line(5, 5, 205, 5)
+
+    //Linha 1 vertical (Margem)
+    doc.line(5, 4, 5, 294)
+
+    //Linha 2 horizontal (Margem)
+    doc.line(5, 293, 205, 293)
+
+    //Linha 2 vertical (Margem)
+    doc.line(204, 5, 205, 294)
+
+    doc.addImage(LogoPenske, 5,0)
     doc.save("Test.pdf")
+    
     }
