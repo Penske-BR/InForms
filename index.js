@@ -35,7 +35,7 @@ function RemoverImagens() {
 function generatePDF() {
     EffectButton()
 
-        let LogoPenske = "./Imgs/LogoPenske.png"
+        let LogoPenske = "./Imgs/PenskeLogo.png"
 
         let DataAtual = new Date()
         let dia = String(DataAtual.getDate()).padStart(2, "0")
@@ -51,7 +51,7 @@ function generatePDF() {
 
     const jsPDF = window.jspdf.jsPDF;    
     var doc = new jsPDF({
-        orientation: 'portrait',
+        orientation: 'landscape',
         unit: "mm",
         format: [1008, 759] //x, y
     });
@@ -65,21 +65,50 @@ function generatePDF() {
 
     //x1, y1, x2, y2
 
+    doc.setFontSize(40)
     doc.setLineWidth(2)
 
     //Linha 1 horizontal (Margem)
-    doc.line(5, 5, 754, 5)
+    doc.line(5, 5, 1003, 5)
 
     //Linha 1 vertical (Margem)
-    doc.line(5, 4, 5, 1003)
+    doc.line(5, 4, 5, 754)
 
     //Linha 2 horizontal (Margem)
-    doc.line(5, 1003, 754, 1003)
+    doc.line(5, 754, 1003, 754)
 
     //Linha 2 vertical (Margem)
-    doc.line(754, 5, 754, 1003)
+    doc.line(1003, 5, 1003, 754)
 
-    doc.addImage(LogoPenske, 5,0)
+    //Linha abaixo da logo Penske
+    doc.addImage(LogoPenske, 10,0)
+    doc.line(5, 100, 1003, 100)
+
+    //Linha ao lado da logo Penske
+    doc.line(130, 5, 130, 100)
+
+    //Linha entre tipo de documento e titulo
+    doc.line(130, 50, 873, 50)
+    doc.text("Tipo de documento:", 135, 35)
+    doc.text("Titulo:", 135, 75)
+
+    //Linha ao lado da Revisão
+    doc.line(873, 5, 873, 100)
+    doc.text("Revisão:", 905, 60)
+
+    //Linha azul abaixo da logo Penske
+    doc.setDrawColor(33, 81, 168)
+    doc.setLineWidth(15)
+    doc.line(5, 105, 1003, 105)
+
+    doc.setDrawColor(0, 0, 0)
+    doc.setLineWidth(2)
+
+    //data e N° Controle
+    doc.text("Data: " + DataFormatada, 10, 130)
+    doc.text("N° Controle: ", 800, 130)
+    doc.line(876, 131, 998, 131)
+
     doc.save("Test.pdf")
     
     }
