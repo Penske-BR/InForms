@@ -28,26 +28,93 @@ function ExibirImagensNaTela(event) {
     })
 }
 
+function RelatorioObject() {
+    let DataAtual = new Date()
+    let dia = String(DataAtual.getDate()).padStart(2, "0")
+    let mes = String(DataAtual.getMonth() + 1).padStart(2, "0")
+    let ano = DataAtual.getFullYear()
+    let hora = String(DataAtual.getHours()).padStart(2, "0")
+    let minuto = String(DataAtual.getMinutes()).padStart(2, "0")
+    let DataFormatada = `${dia}/${mes}/${ano} - ${hora}:${minuto}`
+
+    // if(document.getElementById("NFCaixaDeTexto").value == undefined){
+    // var NumeroDaNota = document.getElementById("NFCaixaDeTexto").value
+    // }
+    // else{
+    //     alert("Preencha o campo de NF!")
+    //     return
+    // }
+    // if(document.getElementById("EstadoCampoDeTexto").value != ""){
+    //     var Estado = document.getElementById("EstadoCampoDeTexto").value
+    // }
+    // else{
+    //     alert("Preencha o campo de Estado!")
+    //     return
+    // }
+    // if(document.getElementById("CidadeCampoDeTexto").value != ""){
+    //     var Cidade = document.getElementById("CidadeCampoDeTexto").value
+    // }
+    // else{
+    //     alert("Preencha o campo de Cidade!")
+    //     return
+    // }
+
+    // if(document.getElementById("CheckBoxCaixaDePapelao").checked){
+    //     var embalagem = document.getElementById("CheckBoxCaixaDePapelao").value
+    // }
+    // else if(document.getElementById("CheckBoxCaixaDeMadeira").checked){
+    //     var embalagem = document.getElementById("CheckBoxCaixaDeMadeira").value
+    // }
+    // else if(document.getElementById("CheckBoxPallet").checked){
+    //     var embalagem = document.getElementById("CheckBoxPallet").value
+    // }else{
+        
+    //     alert("Preencha o campo do material da embalagem!")
+    //     return
+    // }
+
+    // if(document.getElementById("ProblemaCampoDeTexto").value != ""){
+    //     var Problema = document.getElementById("ProblemaCampoDeTexto").value
+    // }else{
+    //     alert("Preencha o campo de problema!")
+    //     return
+    // }
+
+    // if(document.getElementById("TrocarEmbalagem").checked){
+    //     var AcaoTomada = document.getElementById("TrocarEmbalagem").value
+    // }
+    // else if(document.getElementById("RepararEmbalagem").checked){
+    //     var AcaoTomada = document.getElementById("RepararEmbalagem").value
+    // }
+    // else if(document.getElementById("SeguirDanificada").checked){
+    //     var AcaoTomada = document.getElementById("SeguirDanificada").value
+    // }
+    // else{
+    //     alert("Preencha o campo de ação tomada!")
+    //     return
+    // }
+
+    //  RelatorioObj = {
+    //     DataAtual: DataFormatada,
+    //     NF: NumeroDaNota,
+    //     Embalagem: embalagem,
+    //     Estado: Estado,
+    //     Cidade: Cidade,
+    //     Problema: Problema,
+    //     AcaoTomada: AcaoTomada
+    // }
+}
+
 function RemoverImagens() {
     DivDeArmazenarImagens.removeChild(DivDeArmazenarImagens, lastChild)
 }
 
 function generatePDF() {
+    RelatorioObject()
     EffectButton()
 
         let LogoPenske = "./Imgs/PenskeLogo.png"
 
-        let DataAtual = new Date()
-        let dia = String(DataAtual.getDate()).padStart(2, "0")
-        let mes = String(DataAtual.getMonth() + 1).padStart(2, "0")
-        let ano = DataAtual.getFullYear()
-        let hora = String(DataAtual.getHours()).padStart(2, "0")
-        let minuto = String(DataAtual.getMinutes()).padStart(2, "0")
-
-        let DataFormatada = `${dia}/${mes}/${ano} - ${hora}:${minuto}`
-
-        let NF = document.getElementById("NFCaixaDeTexto")
-    
 
     const jsPDF = window.jspdf.jsPDF;    
     var doc = new jsPDF({
@@ -66,6 +133,7 @@ function generatePDF() {
     //x1, y1, x2, y2
 
     doc.setFontSize(40)
+    doc.setFont("Helvetica","bold")
     doc.setLineWidth(2)
 
     //Linha 1 horizontal (Margem)
@@ -105,10 +173,30 @@ function generatePDF() {
     doc.setLineWidth(2)
 
     //data e N° Controle
-    doc.text("Data: " + DataFormatada, 10, 130)
+    doc.text("Data: " , 10, 130)
     doc.text("N° Controle: ", 800, 130)
     doc.line(876, 131, 998, 131)
 
-    doc.save("Test.pdf")
+    //Ação tomada
+    doc.text("Embalagem avariada: " , 10, 180)
+    doc.text("Ação tomada: " , 410, 180)
+    doc.text("Undefined", 600,180)
+    doc.line(750, 185, 998, 185)
+
+    //Peça avariada e problema
+    doc.text("Peça/Embalagem avariada: ", 10, 250)
+    doc.text("Sim", 210,250)
+    doc.text("Descrever problema: ", 350, 250)
+    doc.line(500, 252, 998, 252)
+
+    //Tansportadora, placa e destino
+    doc.text("Transportadora: ", 10, 350)
+    doc.text("TRANSPORTADORA TRANSPORTADORA", 130, 350)
+    doc.text("Placa: ", 504, 350)
+    doc.text("PLAC-1234", 560, 350)
+    doc.text("Destino: ", 750, 350)
+    doc.text("HUB - SÃO PAULO", 830, 350)
+
+    doc.save("Relatorio.pdf")
     
     }
