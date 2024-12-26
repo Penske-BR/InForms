@@ -120,7 +120,7 @@ function generatePDF() {
     var doc = new jsPDF({
         orientation: 'landscape',
         unit: "mm",
-        format: [1008, 759] //x, y
+        format: [1008, 859] //x, y
     });
 
     // var ImagemAnexada = document.getElementsByClassName("ImagensAnexadas")
@@ -196,6 +196,34 @@ function generatePDF() {
     doc.text("PLAC-1234", 560, 350)
     doc.text("Destino: ", 750, 350)
     doc.text("HUB - SÃO PAULO", 830, 350)
+
+    //Hora da saída
+    doc.text("Horário saída: ", 10, 420)
+
+    //Tabela abaixo do horário de saída
+    doc.setTextColor(255, 255, 255)
+    doc.line(5, 450, 1003, 450)
+    doc.setLineWidth(20)
+    doc.setDrawColor(33, 81, 168)
+    doc.line(5, 460, 128, 460)
+    doc.text("Numero da NF", 20, 465)
+
+    doc.setLineWidth(4)
+    doc.setDrawColor(0, 0, 0)
+    doc.line(128, 450, 128, 470)
+
+    doc.setLineWidth(20)
+    doc.setDrawColor(33, 81, 168)
+    doc.line(128, 460, 250, 460)
+    doc.text("Estado", 160, 465)
+
+    doc.setLineWidth(4)
+    doc.setDrawColor(0, 0, 0)
+    doc.line(128, 450, 128, 470)
+
+    doc.setLineWidth(2)
+    doc.setDrawColor(0, 0, 0)
+    doc.line(5, 470, 1003, 470)
 
     doc.save("Relatorio.pdf")
     
