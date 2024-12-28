@@ -37,72 +37,72 @@ function RelatorioObject() {
     let minuto = String(DataAtual.getMinutes()).padStart(2, "0")
     let DataFormatada = `${dia}/${mes}/${ano} - ${hora}:${minuto}`
 
-    // if(document.getElementById("NFCaixaDeTexto").value == undefined){
-    // var NumeroDaNota = document.getElementById("NFCaixaDeTexto").value
-    // }
-    // else{
-    //     alert("Preencha o campo de NF!")
-    //     return
-    // }
-    // if(document.getElementById("EstadoCampoDeTexto").value != ""){
-    //     var Estado = document.getElementById("EstadoCampoDeTexto").value
-    // }
-    // else{
-    //     alert("Preencha o campo de Estado!")
-    //     return
-    // }
-    // if(document.getElementById("CidadeCampoDeTexto").value != ""){
-    //     var Cidade = document.getElementById("CidadeCampoDeTexto").value
-    // }
-    // else{
-    //     alert("Preencha o campo de Cidade!")
-    //     return
-    // }
+    if(document.getElementById("NFCaixaDeTexto").value != undefined){
+    var NumeroDaNota = document.getElementById("NFCaixaDeTexto").value
+    }
+    else{
+        alert("Preencha o campo de NF!")
+        return
+    }
+    if(document.getElementById("EstadoCampoDeTexto").value != ""){
+        var Estado = document.getElementById("EstadoCampoDeTexto").value
+    }
+    else{
+        alert("Preencha o campo de Estado!")
+        return
+    }
+    if(document.getElementById("CidadeCampoDeTexto").value != ""){
+        var Cidade = document.getElementById("CidadeCampoDeTexto").value
+    }
+    else{
+        alert("Preencha o campo de Cidade!")
+        return
+    }
 
-    // if(document.getElementById("CheckBoxCaixaDePapelao").checked){
-    //     var embalagem = document.getElementById("CheckBoxCaixaDePapelao").value
-    // }
-    // else if(document.getElementById("CheckBoxCaixaDeMadeira").checked){
-    //     var embalagem = document.getElementById("CheckBoxCaixaDeMadeira").value
-    // }
-    // else if(document.getElementById("CheckBoxPallet").checked){
-    //     var embalagem = document.getElementById("CheckBoxPallet").value
-    // }else{
+    if(document.getElementById("CheckBoxCaixaDePapelao").checked){
+        var embalagem = document.getElementById("CheckBoxCaixaDePapelao").value
+    }
+    else if(document.getElementById("CheckBoxCaixaDeMadeira").checked){
+        var embalagem = document.getElementById("CheckBoxCaixaDeMadeira").value
+    }
+    else if(document.getElementById("CheckBoxPallet").checked){
+        var embalagem = document.getElementById("CheckBoxPallet").value
+    }else{
         
-    //     alert("Preencha o campo do material da embalagem!")
-    //     return
-    // }
+        alert("Preencha o campo do material da embalagem!")
+        return
+    }
 
-    // if(document.getElementById("ProblemaCampoDeTexto").value != ""){
-    //     var Problema = document.getElementById("ProblemaCampoDeTexto").value
-    // }else{
-    //     alert("Preencha o campo de problema!")
-    //     return
-    // }
+    if(document.getElementById("ProblemaCampoDeTexto").value != ""){
+        var Problema = document.getElementById("ProblemaCampoDeTexto").value
+    }else{
+        alert("Preencha o campo de problema!")
+        return
+    }
 
-    // if(document.getElementById("TrocarEmbalagem").checked){
-    //     var AcaoTomada = document.getElementById("TrocarEmbalagem").value
-    // }
-    // else if(document.getElementById("RepararEmbalagem").checked){
-    //     var AcaoTomada = document.getElementById("RepararEmbalagem").value
-    // }
-    // else if(document.getElementById("SeguirDanificada").checked){
-    //     var AcaoTomada = document.getElementById("SeguirDanificada").value
-    // }
-    // else{
-    //     alert("Preencha o campo de ação tomada!")
-    //     return
-    // }
+    if(document.getElementById("TrocarEmbalagem").checked){
+        var AcaoTomada = document.getElementById("TrocarEmbalagem").value
+    }
+    else if(document.getElementById("RepararEmbalagem").checked){
+        var AcaoTomada = document.getElementById("RepararEmbalagem").value
+    }
+    else if(document.getElementById("SeguirDanificada").checked){
+        var AcaoTomada = document.getElementById("SeguirDanificada").value
+    }
+    else{
+        alert("Preencha o campo de ação tomada!")
+        return
+    }
 
-    //  RelatorioObj = {
-    //     DataAtual: DataFormatada,
-    //     NF: NumeroDaNota,
-    //     Embalagem: embalagem,
-    //     Estado: Estado,
-    //     Cidade: Cidade,
-    //     Problema: Problema,
-    //     AcaoTomada: AcaoTomada
-    // }
+       RelatorioObj = {
+        DataAtual: DataFormatada,
+        NF: NumeroDaNota,
+        Embalagem: embalagem,
+        Estado: Estado,
+        Cidade: Cidade,
+        Problema: Problema,
+        AcaoTomada: AcaoTomada
+    }
 }
 
 function RemoverImagens() {
@@ -173,21 +173,19 @@ function generatePDF() {
     doc.setLineWidth(2)
 
     //data e N° Controle
-    doc.text("Data: " , 10, 130)
+    doc.text("Data:  " + RelatorioObj.DataAtual, 10, 130)
     doc.text("N° Controle: ", 800, 130)
     doc.line(876, 131, 998, 131)
 
     //Ação tomada
-    doc.text("Embalagem avariada: " , 10, 180)
-    doc.text("Ação tomada: " , 410, 180)
-    doc.text("Undefined", 600,180)
+    doc.text("Embalagem avariada: " + RelatorioObj.Embalagem, 10, 180)
+    doc.text("Ação tomada: " + RelatorioObj.AcaoTomada , 350, 180)
     doc.line(750, 185, 998, 185)
 
     //Peça avariada e problema
     doc.text("Peça/Embalagem avariada: ", 10, 250)
     doc.text("Sim", 210,250)
-    doc.text("Descrever problema: ", 350, 250)
-    doc.line(500, 252, 998, 252)
+    doc.text("Descrever problema: " + RelatorioObj.Problema, 350, 250)
 
     //Tansportadora, placa e destino
     doc.text("Transportadora: ", 10, 350)
@@ -203,28 +201,65 @@ function generatePDF() {
     //Tabela abaixo do horário de saída
     doc.setTextColor(255, 255, 255)
     doc.line(5, 450, 1003, 450)
-    doc.setLineWidth(20)
-    doc.setDrawColor(33, 81, 168)
-    doc.line(5, 460, 128, 460)
-    doc.text("Numero da NF", 20, 465)
-
-    doc.setLineWidth(4)
-    doc.setDrawColor(0, 0, 0)
-    doc.line(128, 450, 128, 470)
 
     doc.setLineWidth(20)
     doc.setDrawColor(33, 81, 168)
-    doc.line(128, 460, 250, 460)
-    doc.text("Estado", 160, 465)
+    doc.line(5, 460, 178, 460)
+    doc.text("Numero da NF", 36, 465)
 
     doc.setLineWidth(4)
-    doc.setDrawColor(0, 0, 0)
-    doc.line(128, 450, 128, 470)
+    doc.setDrawColor(0,0,0)
+    doc.line(178, 450, 178, 496)
 
+    doc.setLineWidth(20)
+    doc.setDrawColor(33, 81, 168)
+    doc.line(178, 460, 380, 460)
+    doc.text("Descrição do item", 212, 465)
+
+    doc.setLineWidth(4)
+    doc.setDrawColor(0,0,0)
+    doc.line(380, 450, 380, 496)
+
+    doc.setLineWidth(20)
+    doc.setDrawColor(33, 81, 168)
+    doc.line(380, 460, 660, 460)
+    doc.text("Nome da concessionária", 430, 465)
+
+    doc.setLineWidth(4)
+    doc.setDrawColor(0,0,0)
+    doc.line(660, 450, 660, 496)
+
+    doc.setLineWidth(20)
+    doc.setDrawColor(33, 81, 168)
+    doc.line(660, 460, 820, 460)
+    doc.text("Estado", 710, 465)
+
+    doc.setLineWidth(4)
+    doc.setDrawColor(0,0,0)
+    doc.line(820, 450, 820, 496)
+
+    doc.setLineWidth(20)
+    doc.setDrawColor(33, 81, 168)
+    doc.line(820, 460, 1003, 460)
+    doc.text("Cidade", 880, 465)
+
+    //Linha de baixo da tabela
     doc.setLineWidth(2)
     doc.setDrawColor(0, 0, 0)
     doc.line(5, 470, 1003, 470)
 
-    doc.save("Relatorio.pdf")
+    //Linha que contém as informações
+    doc.setTextColor(0,0,0)
+    doc.line(5, 496, 1003, 496)
+    doc.text(RelatorioObj.NF, 55, 490)
     
+    doc.text("Para choque", 212, 490)
+
+    doc.text("Box comercio de veiculos LTDA", 430, 490)
+
+    doc.text(RelatorioObj.Estado, 710, 490)
+
+    doc.text(RelatorioObj.Cidade, 880, 490)
+
+    doc.save("Relatorio.pdf")
     }
