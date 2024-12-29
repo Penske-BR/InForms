@@ -36,7 +36,6 @@
 
                 <div class="AgrupadorDasOpcoes">
                     <input class="TextCheckbox" id="CidadeCampoDeTexto" type="text" name="InputDeCidade" placeholder="Cidade..."></div>
-
             </div>
         </label>
 
@@ -46,15 +45,15 @@
             <div class="centralizarAlternativasFlex">
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="CheckBoxCaixaDePapelao" type="radio" name="OpcaoPapelao" value="Papelão">Papelão</div>
+                    <input class="checkboxs" id="CheckBoxCaixaDePapelao" type="radio" name="Embalagem" value="Papelão">Papelão</div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="CheckBoxCaixaDeMadeira" type="radio" name="OpcaoMadeira" value="Madeira">
+                    <input class="checkboxs" id="CheckBoxCaixaDeMadeira" type="radio" name="Embalagem" value="Madeira">
                     Madeira
                 </div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="CheckBoxPallet" type="radio" name="OpcaoPallet" value="Pallet">Pallet</div>
+                    <input class="checkboxs" id="CheckBoxPallet" type="radio" name="Embalagem" value="Pallet">Pallet</div>
 
             </div>
         </label>
@@ -76,15 +75,104 @@
             <div class="centralizarAlternativasFlex">
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="TrocarEmbalagem" type="radio" name="testeDeOpcao" value="Trocar de embalagem">Trocar embalagem</div>
+                    <input class="checkboxs" id="TrocarEmbalagem" type="radio" name="AcaoTomada" value="Trocar de embalagem">Trocar embalagem</div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="RepararEmbalagem" type="radio" name="testeDeOpcao" value="Reparar embalagem">
+                    <input class="checkboxs" id="RepararEmbalagem" type="radio" name="AcaoTomada" value="Reparar embalagem">
                     Reparar embalagem
                 </div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="SeguirDanificada" type="radio" name="testeDeOpcao" value="Seguir danificada">Seguir danificada</div>
+                    <input class="checkboxs" id="SeguirDanificada" type="radio" name="AcaoTomada" value="Seguir danificada">Seguir danificada</div>
+
+            </div>
+        </label>
+
+        <label for="QuestaoSeguiuViagem" id="QuestaoSeguiuViagem" class="CaixaDePergunta">
+            <span class="Pergunta">O volume seguiu viagem</span>
+
+            <div class="centralizarAlternativasFlex">
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="SimSeguiuViagem" type="radio" name="SeguirViagem" value="Sim">Sim</div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoSeguiuViagem" type="radio" name="SeguirViagem" value="Não">Não
+                </div>
+            </div>
+        </label>
+
+        <label for="PecaEmbalagemAvariada" id="PecaEmbalagemAvariada" class="CaixaDePergunta">
+            <span class="Pergunta">Peça/Embalagem avariada</span>
+
+            <div class="centralizarAlternativasFlex">
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="SimVolumeAvariado" type="radio" name="Avariado" value="Sim">Sim</div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoVolumeAvariado" type="radio" name="Avariado" value="Não">Não
+                </div>
+            </div>
+        </label>
+
+        <label for="QuestaoTransportadora" id="QuestaoTransportadora" class="CaixaDePergunta">
+            <span class="Pergunta">Digite o nome da transportadora</span>
+
+            <div class="centralizarAlternativasFlex">
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="TextCheckbox" id="TransportadoraCampoDeTexto" type="text" name="Transportadora" placeholder="Transportadora..."></div>
+            </div>
+        </label>
+
+        <label for="QuestaoPlaca" id="QuestaoPlaca" class="CaixaDePergunta">
+            <span class="Pergunta">Digite a placa</span>
+
+            <div class="centralizarAlternativasFlex">
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="TextCheckbox" id="PlacaCampoDeTexto" type="text" name="Placa" placeholder="Placa..."></div>
+            </div>
+        </label>
+
+        <label for="QuestaoDestino" id="QuestaoDestino" class="CaixaDePergunta">
+            <span class="Pergunta">Digite o destino</span>
+
+            <div class="centralizarAlternativasFlex">
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="TextCheckbox" id="DestinoCampoDeTexto" type="text" name="Destino" placeholder="Destino..."></div>
+            </div>
+        </label>
+
+        <label for="QuestaoHorMinuto" id="QuestaoHorMinuto" class="CaixaDePergunta">
+            <span class="Pergunta">Digite o Horário de saída.
+            </span>
+
+            <div class="centralizarAlternativasFlex">
+
+                <div class="AgrupadorDasOpcoes AgrupadorHoraMinuto">
+                    <input class="TextCheckbox" id="HoraCampoDeTexto" type="text" name="Horario" placeholder="Horário..."></div>
+            </div>
+        </label>
+
+        <label for="QuestaoItem" id="QuestaoItem" class="CaixaDePergunta">
+            <span class="Pergunta">Descreva o item</span>
+
+            <div class="centralizarAlternativasFlex">
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="TextCheckbox" id="ItemCampoDeTexto" type="text" name="ItemCampoDeTexto" placeholder="Item..."></div>
+
+            </div>
+        </label>
+
+        <label for="QuestaoConcessionaria" id="QuestaoConcessionaria" class="CaixaDePergunta">
+            <span class="Pergunta">DIgite o nome da Concessionária</span>
+
+            <div class="centralizarAlternativasFlex">
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="TextCheckbox" id="ConcessionariaCampoDeTexto" type="text" name="Concessionaria" placeholder="Concessionaria..."></div>
 
             </div>
         </label>
@@ -97,7 +185,7 @@
 
     </form>
 
-    <div id="centralizarButtonFlex"><button id="MyButton" onclick="generatePDF()">Baixar relatório</button></div>
+    <div id="centralizarButtonFlex"><button id="MyButton" onclick="GerarPDF()">Baixar relatório</button></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" referrerpolicy="no-referrer"></script>
 

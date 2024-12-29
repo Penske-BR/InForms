@@ -94,6 +94,68 @@ function RelatorioObject() {
         return
     }
 
+    if(document.getElementById("SimSeguiuViagem").checked){
+        var SeguiuViagem = "O volume seguiu viagem"
+    }
+    else if(document.getElementById("NaoSeguiuViagem").checked){
+        var SeguiuViagem = "O volume não seguiu viagem"
+    }
+    else{
+        alert("Preencha o campo de seguiu viagem!")
+    }
+
+    if(document.getElementById("SimVolumeAvariado").checked){
+        var PecaEmbalagemAvariada = "Sim"
+    }
+    else if(document.getElementById("NaoVolumeAvariado").checked){
+        var PecaEmbalagemAvariada = "Não"
+    }
+    else{
+        alert("Preencha o campo de peça/embalagem avariada!")
+    }
+
+    if(document.getElementById("TransportadoraCampoDeTexto").value != ""){
+        var Transportadora = document.getElementById("TransportadoraCampoDeTexto").value
+    }else{
+        alert("Preencha o campo de Transportadora!")
+        return
+    }
+
+    if(document.getElementById("PlacaCampoDeTexto").value != ""){
+        var Placa = document.getElementById("PlacaCampoDeTexto").value
+    }else{
+        alert("Preencha o campo de Placa!")
+        return
+    }
+
+    if(document.getElementById("DestinoCampoDeTexto").value != ""){
+        var Destino = document.getElementById("DestinoCampoDeTexto").value
+    }else{
+        alert("Preencha o campo de Destino!")
+        return
+    }
+
+    if(document.getElementById("HoraCampoDeTexto").value != ""){
+        var Horario = document.getElementById("HoraCampoDeTexto").value
+    }else{
+        alert("Preencha o campo de Horário!")
+        return
+    }
+
+    if(document.getElementById("ItemCampoDeTexto").value != ""){
+        var Item = document.getElementById("ItemCampoDeTexto").value
+    }else{
+        alert("Preencha o campo de Item!")
+        return
+    }
+
+    if(document.getElementById("ConcessionariaCampoDeTexto").value != ""){
+        var concessionaria = document.getElementById("ConcessionariaCampoDeTexto").value
+    }else{
+        alert("Preencha o campo de Concessionária!")
+        return
+    }
+
        RelatorioObj = {
         DataAtual: DataFormatada,
         NF: NumeroDaNota,
@@ -101,7 +163,15 @@ function RelatorioObject() {
         Estado: Estado,
         Cidade: Cidade,
         Problema: Problema,
-        AcaoTomada: AcaoTomada
+        AcaoTomada: AcaoTomada,
+        SeguiuViagem: SeguiuViagem,
+        PecaEmbalagemAvariada: PecaEmbalagemAvariada,
+        Transportadora: Transportadora,
+        Placa: Placa,
+        Destino: Destino,
+        Horario: Horario,
+        Item: Item,
+        concessionaria
     }
 }
 
@@ -109,7 +179,7 @@ function RemoverImagens() {
     DivDeArmazenarImagens.removeChild(DivDeArmazenarImagens, lastChild)
 }
 
-function generatePDF() {
+function GerarPDF() {
     RelatorioObject()
     EffectButton()
 
@@ -180,23 +250,23 @@ function generatePDF() {
     //Ação tomada
     doc.text("Embalagem avariada: " + RelatorioObj.Embalagem, 10, 180)
     doc.text("Ação tomada: " + RelatorioObj.AcaoTomada , 350, 180)
+    doc.text(RelatorioObj.SeguiuViagem, 751, 183)
     doc.line(750, 185, 998, 185)
 
     //Peça avariada e problema
-    doc.text("Peça/Embalagem avariada: ", 10, 250)
-    doc.text("Sim", 210,250)
+    doc.text("Peça/Embalagem avariada: " + RelatorioObj.PecaEmbalagemAvariada, 10, 250)
     doc.text("Descrever problema: " + RelatorioObj.Problema, 350, 250)
 
     //Tansportadora, placa e destino
     doc.text("Transportadora: ", 10, 350)
-    doc.text("TRANSPORTADORA TRANSPORTADORA", 130, 350)
+    doc.text(RelatorioObj.Transportadora, 130, 350)
     doc.text("Placa: ", 504, 350)
-    doc.text("PLAC-1234", 560, 350)
+    doc.text(RelatorioObj.Placa, 560, 350)
     doc.text("Destino: ", 750, 350)
-    doc.text("HUB - SÃO PAULO", 830, 350)
+    doc.text(RelatorioObj.Destino, 830, 350)
 
     //Hora da saída
-    doc.text("Horário saída: ", 10, 420)
+    doc.text("Horário saída: " + RelatorioObj.Horario, 10, 420)
 
     //Tabela abaixo do horário de saída
     doc.setTextColor(255, 255, 255)
@@ -253,9 +323,9 @@ function generatePDF() {
     doc.line(5, 496, 1003, 496)
     doc.text(RelatorioObj.NF, 55, 490)
     
-    doc.text("Para choque", 212, 490)
+    doc.text(RelatorioObj.Item, 212, 490)
 
-    doc.text("Box comercio de veiculos LTDA", 430, 490)
+    doc.text(RelatorioObj.concessionaria, 430, 490)
 
     doc.text(RelatorioObj.Estado, 710, 490)
 
