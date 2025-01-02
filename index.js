@@ -1,3 +1,4 @@
+let LogoPenske = "./Imgs/PenskeLogo.png"
 var downloadButton = document.getElementById("MyButton")
 var DivDeArmazenarImagens = document.getElementById("ArmazenarImagens")
 var labelDeArmazenarImagens = document.getElementById("QuestaoArquivo")
@@ -44,6 +45,7 @@ function RelatorioObject() {
         alert("Preencha o campo de NF!")
         return
     }
+
     if(document.getElementById("EstadoCampoDeTexto").value != ""){
         var Estado = document.getElementById("EstadoCampoDeTexto").value
     }
@@ -58,25 +60,31 @@ function RelatorioObject() {
         alert("Preencha o campo de Cidade!")
         return
     }
-
-    if(document.getElementById("CheckBoxCaixaDePapelao").checked){
-        var embalagem = document.getElementById("CheckBoxCaixaDePapelao").value
-    }
-    else if(document.getElementById("CheckBoxCaixaDeMadeira").checked){
-        var embalagem = document.getElementById("CheckBoxCaixaDeMadeira").value
-    }
-    else if(document.getElementById("CheckBoxPallet").checked){
-        var embalagem = document.getElementById("CheckBoxPallet").value
+    if(document.getElementById("ConcessionariaCampoDeTexto").value != ""){
+        var Concessionaria = document.getElementById("ConcessionariaCampoDeTexto").value
     }else{
-        
-        alert("Preencha o campo do material da embalagem!")
+        alert("Preencha o campo de Concessionária!")
+        return
+    }
+
+    if(document.getElementById("ItemCampoDeTexto").value != ""){
+        var Item = document.getElementById("ItemCampoDeTexto").value   
+    }else{
+        alert("Preencha o campo de Item!")
+        return
+    }
+
+    if(document.getElementById("EmbalagemCampoDeTexto") != ""){
+        var Embalagem = document.getElementById("EmbalagemCampoDeTexto").value
+    }else{
+        alert("Preencha o campo de Embalagem!")
         return
     }
 
     if(document.getElementById("ProblemaCampoDeTexto").value != ""){
         var Problema = document.getElementById("ProblemaCampoDeTexto").value
     }else{
-        alert("Preencha o campo de problema!")
+        alert("Preencha o campo de Problema!")
         return
     }
 
@@ -88,30 +96,18 @@ function RelatorioObject() {
     }
     else if(document.getElementById("SeguirDanificada").checked){
         var AcaoTomada = document.getElementById("SeguirDanificada").value
-    }
-    else{
-        alert("Preencha o campo de ação tomada!")
-        return
-    }
-
-    if(document.getElementById("SimSeguiuViagem").checked){
-        var SeguiuViagem = "O volume seguiu viagem"
-    }
-    else if(document.getElementById("NaoSeguiuViagem").checked){
-        var SeguiuViagem = "O volume não seguiu viagem"
-    }
-    else{
-        alert("Preencha o campo de seguiu viagem!")
+    }else{
+        alert("Preencha o campo de Ação tomada!")
     }
 
     if(document.getElementById("SimVolumeAvariado").checked){
-        var PecaEmbalagemAvariada = "Sim"
+        var PecaAvariada = document.getElementById("SimVolumeAvariado").value
     }
     else if(document.getElementById("NaoVolumeAvariado").checked){
-        var PecaEmbalagemAvariada = "Não"
-    }
-    else{
-        alert("Preencha o campo de peça/embalagem avariada!")
+        var PecaAvariada = document.getElementById("NaoVolumeAvariado").value
+    }else{
+        alert("Preencha o campo de Peça avariada!")
+        return
     }
 
     if(document.getElementById("TransportadoraCampoDeTexto").value != ""){
@@ -128,50 +124,19 @@ function RelatorioObject() {
         return
     }
 
-    if(document.getElementById("DestinoCampoDeTexto").value != ""){
-        var Destino = document.getElementById("DestinoCampoDeTexto").value
-    }else{
-        alert("Preencha o campo de Destino!")
-        return
-    }
-
-    if(document.getElementById("HoraCampoDeTexto").value != ""){
-        var Horario = document.getElementById("HoraCampoDeTexto").value
-    }else{
-        alert("Preencha o campo de Horário!")
-        return
-    }
-
-    if(document.getElementById("ItemCampoDeTexto").value != ""){
-        var Item = document.getElementById("ItemCampoDeTexto").value
-    }else{
-        alert("Preencha o campo de Item!")
-        return
-    }
-
-    if(document.getElementById("ConcessionariaCampoDeTexto").value != ""){
-        var concessionaria = document.getElementById("ConcessionariaCampoDeTexto").value
-    }else{
-        alert("Preencha o campo de Concessionária!")
-        return
-    }
-
-       RelatorioObj = {
+    RelatorioObj = {
         DataAtual: DataFormatada,
         NF: NumeroDaNota,
-        Embalagem: embalagem,
         Estado: Estado,
         Cidade: Cidade,
+        Concessionaria: Concessionaria,
+        Item: Item,
+        Embalagem: Embalagem,
         Problema: Problema,
         AcaoTomada: AcaoTomada,
-        SeguiuViagem: SeguiuViagem,
-        PecaEmbalagemAvariada: PecaEmbalagemAvariada,
+        PecaAvariada: PecaAvariada,
         Transportadora: Transportadora,
-        Placa: Placa,
-        Destino: Destino,
-        Horario: Horario,
-        Item: Item,
-        concessionaria
+        Placa: Placa
     }
 }
 
@@ -182,9 +147,6 @@ function RemoverImagens() {
 function GerarPDF() {
     RelatorioObject()
     EffectButton()
-
-        let LogoPenske = "./Imgs/PenskeLogo.png"
-
 
     const jsPDF = window.jspdf.jsPDF;    
     var doc = new jsPDF({
@@ -250,23 +212,15 @@ function GerarPDF() {
     //Ação tomada
     doc.text("Embalagem avariada: " + RelatorioObj.Embalagem, 10, 180)
     doc.text("Ação tomada: " + RelatorioObj.AcaoTomada , 350, 180)
-    doc.text(RelatorioObj.SeguiuViagem, 751, 183)
-    doc.line(750, 185, 998, 185)
 
     //Peça avariada e problema
-    doc.text("Peça/Embalagem avariada: " + RelatorioObj.PecaEmbalagemAvariada, 10, 250)
+    doc.text("Peça/Embalagem avariada: " + RelatorioObj.PecaAvariada, 10, 250)
     doc.text("Descrever problema: " + RelatorioObj.Problema, 350, 250)
 
     //Tansportadora, placa e destino
     doc.text("Transportadora: ", 10, 350)
     doc.text(RelatorioObj.Transportadora, 130, 350)
-    doc.text("Placa: ", 504, 350)
-    doc.text(RelatorioObj.Placa, 560, 350)
-    doc.text("Destino: ", 750, 350)
-    doc.text(RelatorioObj.Destino, 830, 350)
-
-    //Hora da saída
-    doc.text("Horário saída: " + RelatorioObj.Horario, 10, 420)
+    doc.text("Placa: " + RelatorioObj.Placa, 350, 350)
 
     //Tabela abaixo do horário de saída
     doc.setTextColor(255, 255, 255)
@@ -325,7 +279,7 @@ function GerarPDF() {
     
     doc.text(RelatorioObj.Item, 212, 490)
 
-    doc.text(RelatorioObj.concessionaria, 430, 490)
+    doc.text(RelatorioObj.Concessionaria, 430, 490)
 
     doc.text(RelatorioObj.Estado, 710, 490)
 
