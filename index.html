@@ -11,7 +11,8 @@
 </head>
 <body>
 
-    <h1 id="Titulo">Formulário de não conformidades</h1>
+    <h1 id="Titulo">Relatório</br> 
+        não conformidades</h1>
     <form>
         <label for="QuestaoNumero" id="QuestaoNumero" class="CaixaDePergunta">
             <span class="Pergunta">NF
@@ -21,6 +22,18 @@
 
                 <div class="AgrupadorDasOpcoes">
                     <input class="TextCheckbox" id="NFCaixaDeTexto" type="number" name="InputDeNF" placeholder="NF..."></div>
+
+            </div>
+        </label>
+
+        <label for="QuestaoAgrupador" id="QuestaoAgrupador" class="CaixaDePergunta">
+            <span class="Pergunta">Agrupador
+            </span>
+
+            <div class="centralizarAlternativasFlex">
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="TextCheckbox" id="AgrupadorCaixaDeTexto" type="number" name="InputDeAgrupador" placeholder="Agrupador..."></div>
 
             </div>
         </label>
@@ -64,7 +77,7 @@
         </label>
 
         <label for="QuestaoProblema" id="QuestaoProblema" class="CaixaDePergunta">
-            <span class="Pergunta">Problema</span>
+            <span class="Pergunta">Descreva o Problema</span>
 
             <div class="centralizarAlternativasFlex">
 
@@ -80,15 +93,15 @@
             <div class="centralizarAlternativasFlex">
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="TrocarEmbalagem" type="radio" name="AcaoTomada" value="Trocar de embalagem">Troca de embalagem</div>
+                    <input class="checkboxs" id="TrocarEmbalagem" type="radio" name="AcaoTomada" value="Troca da embalagem">Troca da embalagem</div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="RepararEmbalagem" type="radio" name="AcaoTomada" value="Reparar embalagem">
-                    Reparo de embalagem
+                    <input class="checkboxs" id="RepararEmbalagem" type="radio" name="AcaoTomada" value="Reparo da embalagem">
+                    Reparo da embalagem
                 </div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="SeguirDanificada" type="radio" name="AcaoTomada" value="Seguir danificada">Seguiu danificada</div>
+                    <input class="checkboxs" id="SeguirDanificada" type="radio" name="AcaoTomada" value="Seguiu danificada">Seguiu danificada</div>
 
             </div>
         </label>
@@ -127,6 +140,36 @@
             </div>
         </label>
 
+        <label for="QuestaoDestino" id="QuestaoDestino" class="CaixaDePergunta">
+            <span class="Pergunta">Destino</span>
+
+            <div class="centralizarAlternativasFlex">
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="TextCheckbox" id="DestinoCampoDeTexto" type="text" name="Destino" placeholder="Destino..."></div>
+            </div>
+        </label>
+
+        <label for="QuestaoHorario" id="QuestaoHorario" class="CaixaDePergunta">
+            <span class="Pergunta">Horário de saída</span>
+
+            <div class="centralizarAlternativasFlex">
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="TextCheckbox" id="HorarioCampoDeTexto" type="text" name="Horario" placeholder="Horário..."></div>
+            </div>
+        </label>
+
+        <label for="QuestaoObs" id="QuestaoObs" class="CaixaDePergunta">
+            <span class="Pergunta">Observação</span>
+
+            <div class="centralizarAlternativasFlex">
+
+                <div class="AgrupadorDasOpcoes" id="agrupadorCampoObs">
+                    <div id="CampoDeObs" contenteditable="true" data-placeholder="Obs..."></div>
+                </div>
+            </div>
+        </label>
 
         <label for="QuestaoArquivo" id="QuestaoArquivo" class="CaixaDePergunta">
             <span class="Pergunta">Anexar foto</span>

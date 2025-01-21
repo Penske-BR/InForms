@@ -4,7 +4,6 @@
     font-family:"Open Sans", sans-serif;
     font-weight: 100;
 }
-/* #E1E5E8 */
 body{
     background: linear-gradient(to right, #0000002c,#E1E5E8, #0000002c );
 }
@@ -105,6 +104,12 @@ form{
     display: flex;
     flex-direction: column;
 }
+#agrupadorCampoObs{
+    width: 100%;
+}
+#ObsCampoDeTexto{
+    width: 80%;
+}
 #ArmazenarImagens{
     position: absolute;
     width: 50%;
@@ -116,10 +121,6 @@ form{
     margin-top: 5%;
     display: flex;
     justify-content: center;
-}
-#HoraCampoDeTexto{
-    width: 10vh;
-    text-align: center;
 }
 button{
     border-radius: 3vh;
@@ -133,6 +134,29 @@ button{
 }
 button:hover{
     cursor: pointer;
+}
+
+#CampoDeObs{
+    width: 40vh;
+    height: 30vh;
+    background-color: white;
+    border-radius: 3vh;
+}
+#CampoDeObs:hover{
+    cursor: auto;
+}
+#CampoDeObs::before {
+    content: attr(data-placeholder);
+    color: #aaa;
+    pointer-events: none;
+}
+
+#CampoDeObs:empty::before {
+    display: block;
+}
+
+#CampoDeObs:not(:empty)::before {
+    display: none;
 }
 
 @media (max-width: 1200px) {
