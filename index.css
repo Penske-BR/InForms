@@ -137,10 +137,11 @@ button:hover{
 }
 
 #CampoDeObs{
-    width: 40vh;
+    width: 80%;
     height: 30vh;
     background-color: white;
     border-radius: 3vh;
+    padding: 2%;
 }
 #CampoDeObs:hover{
     cursor: auto;
@@ -149,6 +150,7 @@ button:hover{
     content: attr(data-placeholder);
     color: #aaa;
     pointer-events: none;
+    padding: 2%;
 }
 
 #CampoDeObs:empty::before {
