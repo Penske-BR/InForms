@@ -94,6 +94,8 @@ form{
 }
 #InputDeAnexarImagem{
     position: relative;
+    align-self: flex-start;
+    width: 25vh;
 }
 .checkboxs:hover{
     cursor: pointer;
@@ -178,8 +180,9 @@ button:hover{
     width: 5vh;
     height: 5vh;
     position: absolute;
-    top: 5%;
+    top: 0%;
     right: 2%;
+    margin-top: 2%;
     background-color: red;
     border: none;
     border-radius: 5vh;

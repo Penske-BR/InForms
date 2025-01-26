@@ -50,7 +50,9 @@ function ExibirImagensNaTela() {
     })
 }
 
-BotaoDeExcluirImagem.addEventListener("click", function() {
+BotaoDeExcluirImagem.addEventListener("click", function(event) {
+    event.preventDefault()
+
     const ArrayDasImagens = Array.from(labelDeArmazenarImagens.getElementsByClassName("imgContainer"))
 
     for(let i = ArrayDasImagens.length -1; i >= 0; i--){
