@@ -29,7 +29,8 @@ form{
     height: 100%;
     font-size: 3vh;
     top: 1%;
-    margin-bottom: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 .CaixaDePergunta{
     position: relative;
@@ -80,6 +81,7 @@ form{
     border-radius: 3vh;
     font-size: 2vh;
     padding-left: 5%;
+    z-index: 3;
 }
 #InputDeAnexarImagem{
     border-radius: 2vh;
@@ -122,7 +124,7 @@ form{
     display: flex;
     justify-content: center;
 }
-button{
+#BotaoDeBaixar{
     border-radius: 3vh;
     width: 18vh;
     height: 6vh;
@@ -159,6 +161,50 @@ button:hover{
 
 #CampoDeObs:not(:empty)::before {
     display: none;
+}
+
+#CentralizarImagensFlex{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#BotaoDeExcluirImagem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5vh;
+    height: 5vh;
+    position: absolute;
+    top: 5%;
+    right: 2%;
+    background-color: red;
+    border: none;
+    border-radius: 5vh;
+    color: white;
+    font-weight: 500;
+}
+#BotaoDeExcluirImagem > img{
+    position: absolute;
+    width: 60%;
+    height: 60%;
+}
+.imgContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.CheckBoxDeDeletar{
+    width: 5vh;
+    height: 5vh;
+    border-radius: 5vh;
+    background-color: red;
+    margin-left: 6%;
+    margin-bottom: -2%;
 }
 
 @media (max-width: 1200px) {

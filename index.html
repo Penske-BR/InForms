@@ -8,12 +8,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.15.10/dist/sweetalert2.min.css">
+
 </head>
 <body>
 
     <h1 id="Titulo">Relatório</br> 
         não conformidades</h1>
     <form>
+
         <label for="QuestaoNumero" id="QuestaoNumero" class="CaixaDePergunta">
             <span class="Pergunta">NF
             </span>
@@ -39,7 +43,7 @@
         </label>
 
         <label for="QuestaoCidadeEstado" id="QuestaoCidadeEstado" class="CaixaDePergunta">
-            <span class="Pergunta">Estado/Cidade e Concessionária.
+            <span class="Pergunta">Estado,Cidade e Concessionária.
             </span>
 
             <div class="centralizarAlternativasFlex">
@@ -72,7 +76,7 @@
 
             <div class="centralizarAlternativasFlex">
                 <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="EmbalagemCampoDeTexto" type="text" name="EmbalagemCampoDeTexto" placeholder="Material..."></div>
+                    <input class="TextCheckbox" id="EmbalagemCampoDeTexto" type="text" name="Embalagem" placeholder="Material..."></div>
             </div>
         </label>
 
@@ -166,22 +170,26 @@
             <div class="centralizarAlternativasFlex">
 
                 <div class="AgrupadorDasOpcoes" id="agrupadorCampoObs">
-                    <div id="CampoDeObs" contenteditable="true" data-placeholder="Obs..."></div>
+                    <textarea id="CampoDeObs" placeholder="Obs..."></textarea>
                 </div>
             </div>
         </label>
 
         <label for="QuestaoArquivo" id="QuestaoArquivo" class="CaixaDePergunta">
             <span class="Pergunta">Anexar foto</span>
-
+                    <button id="BotaoDeExcluirImagem"><img src="Imgs/trash-can.png" alt=""></button>
                     <input class="TextCheckbox" id="InputDeAnexarImagem" type="file" accept="image/*" name="InputDeAnexarFoto" multiple onchange="ExibirImagensNaTela(event)">
+                    <div id="CentralizarImagensFlex">
+                    </div>
         </label>
 
     </form>
 
-    <div id="centralizarButtonFlex"><button id="MyButton" onclick="GerarPDF()">Baixar relatório</button></div>
+    <div id="centralizarButtonFlex"><button id="BotaoDeBaixar" onclick="GerarPDF()">Baixar relatório</button></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.15.10/dist/sweetalert2.all.min.js"></script>
 
     <script src="index.js">
     </script>

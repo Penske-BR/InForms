@@ -1,7 +1,9 @@
-let LogoPenske = "./Imgs/PenskeLogo.png"
-var downloadButton = document.getElementById("MyButton")
-var DivDeArmazenarImagens = document.getElementById("ArmazenarImagens")
-var labelDeArmazenarImagens = document.getElementById("QuestaoArquivo")
+const LogoPenske = "./Imgs/PenskeLogo.png"
+const downloadButton = document.getElementById("BotaoDeBaixar")
+const labelDeArmazenarImagens = document.getElementById("CentralizarImagensFlex")
+const BotaoDeExcluirImagem = document.getElementById("BotaoDeExcluirImagem")
+const InputDeAnexarImagem = document.getElementById("InputDeAnexarImagem")
+const btnTest = document.getElementById("btnTest")
 
 function EffectButton(){
     downloadButton.style.backgroundColor = "black"
@@ -12,23 +14,56 @@ function EffectButton(){
     }, 200);
 }
 
-function ExibirImagensNaTela(event) {
-    var input = event.target
+let ArrayDeElementos = []
+function ExibirImagensNaTela() {
+    for(let i = 0; i < InputDeAnexarImagem.files.length; i++){
+        ArrayDeElementos.push(InputDeAnexarImagem.files[i])
+    }
 
-    Array.from(input.files).forEach(file => {
+    while (labelDeArmazenarImagens.firstChild) {
+        labelDeArmazenarImagens.removeChild(labelDeArmazenarImagens.firstChild);
+    }
+
+    function ExibirBotaoDeDeletar(ElementoPai) {
+                var CheckBoxDeDeletar = document.createElement("input")
+                CheckBoxDeDeletar.type = "checkbox"
+                CheckBoxDeDeletar.className = "CheckBoxDeDeletar"
+                ElementoPai.appendChild(CheckBoxDeDeletar)
+                return CheckBoxDeDeletar
+    }
+
+    ArrayDeElementos.forEach(file => {
         var reader = new FileReader()
         reader.onload = function() {
             var dataURL = reader.result
+            var imgContainer = document.createElement("div")
             var img = document.createElement("img")
+            imgContainer.className = "imgContainer"
             img.className = "ImagensAnexadas"
             img.src = dataURL
-            labelDeArmazenarImagens.appendChild(img)
-            console.log(dataURL)
+            img.title = "Foto da embalagem"
+            ExibirBotaoDeDeletar(imgContainer)
+            imgContainer.appendChild(img)
+            labelDeArmazenarImagens.appendChild(imgContainer)
         }
         reader.readAsDataURL(file)
     })
 }
 
+BotaoDeExcluirImagem.addEventListener("click", function() {
+    const ArrayDasImagens = Array.from(labelDeArmazenarImagens.getElementsByClassName("imgContainer"))
+
+    for(let i = ArrayDasImagens.length -1; i >= 0; i--){
+        const container = ArrayDasImagens[i]
+        const checkbox = container.getElementsByTagName("input")[0]
+        if(checkbox.checked){
+            labelDeArmazenarImagens.removeChild(container)
+            ArrayDeElementos.splice(i, 1)
+        }
+    }
+})
+
+let RelatorioObj = {}
 function RelatorioObject() {
     let DataAtual = new Date()
     let dia = String(DataAtual.getDate()).padStart(2, "0")
@@ -38,11 +73,26 @@ function RelatorioObject() {
     let minuto = String(DataAtual.getMinutes()).padStart(2, "0")
     let DataFormatada = `${dia}/${mes}/${ano} - ${hora}:${minuto}`
 
-    if(document.getElementById("NFCaixaDeTexto").value != undefined){
+    if(document.getElementById("NFCaixaDeTexto").value != ""){
     var NumeroDaNota = document.getElementById("NFCaixaDeTexto").value
     }
     else{
-        alert("Preencha o campo de NF!")
+        Swal.fire({
+            title: 'Ops!',
+            text: 'Você esqueceu de preencher o campo de NF!',
+            icon: 'error'
+        });
+        return
+    }
+
+    if(document.getElementById("AgrupadorCaixaDeTexto").value != ""){
+        var Agrupador = document.getElementById("AgrupadorCaixaDeTexto").value
+    }else{
+        Swal.fire({
+            title: 'Ops!',
+            text: 'Você esqueceu de preencher o campo de Agrupador!',
+            icon: 'error'
+        });
         return
     }
 
@@ -50,41 +100,66 @@ function RelatorioObject() {
         var Estado = document.getElementById("EstadoCampoDeTexto").value
     }
     else{
-        alert("Preencha o campo de Estado!")
+        Swal.fire({
+            title: 'Ops!',
+            text: 'Você esqueceu de preencher o campo de Estado!',
+            icon: 'error'
+        });
         return
     }
     if(document.getElementById("CidadeCampoDeTexto").value != ""){
         var Cidade = document.getElementById("CidadeCampoDeTexto").value
     }
     else{
-        alert("Preencha o campo de Cidade!")
+        Swal.fire({
+            title: 'Ops!',
+            text: 'Você esqueceu de preencher o campo de Cidade!',
+            icon: 'error'
+        });
         return
     }
+
     if(document.getElementById("ConcessionariaCampoDeTexto").value != ""){
         var Concessionaria = document.getElementById("ConcessionariaCampoDeTexto").value
     }else{
-        alert("Preencha o campo de Concessionária!")
+        Swal.fire({
+            title: 'Ops!',
+            text: 'Você esqueceu de preencher o campo de Concessionária!',
+            icon: 'error'
+        });
         return
     }
 
     if(document.getElementById("ItemCampoDeTexto").value != ""){
         var Item = document.getElementById("ItemCampoDeTexto").value   
     }else{
-        alert("Preencha o campo de Item!")
+        Swal.fire({
+            title: 'Ops!',
+            text: 'Você esqueceu de preencher o campo de Item!',
+            icon: 'error'
+        });
         return
     }
 
-    if(document.getElementById("EmbalagemCampoDeTexto") != ""){
+    if(document.getElementById("EmbalagemCampoDeTexto").value != ""){
         var Embalagem = document.getElementById("EmbalagemCampoDeTexto").value
     }else{
-        alert("Preencha o campo de Embalagem!")
+        Swal.fire({
+            title: 'Ops!',
+            text: 'Você esqueceu de preencher o campo de Embalagem!',
+            icon: 'error'
+        });
         return
     }
 
     if(document.getElementById("ProblemaCampoDeTexto").value != ""){
         var Problema = document.getElementById("ProblemaCampoDeTexto").value
     }else{
-        alert("Preencha o campo de Problema!")
+        Swal.fire({
+            title: 'Ops!',
+            text: 'Você esqueceu de preencher o campo de Problema!',
+            icon: 'error'
+        });
         return
     }
 
@@ -97,7 +172,12 @@ function RelatorioObject() {
     else if(document.getElementById("SeguirDanificada").checked){
         var AcaoTomada = document.getElementById("SeguirDanificada").value
     }else{
-        alert("Preencha o campo de Ação tomada!")
+        Swal.fire({
+            title: 'Ops!',
+            text: 'Você esqueceu de preencher o campo de Ação tomada!',
+            icon: 'error'
+        });
+        return
     }
 
     if(document.getElementById("SimVolumeAvariado").checked){
@@ -106,27 +186,73 @@ function RelatorioObject() {
     else if(document.getElementById("NaoVolumeAvariado").checked){
         var PecaAvariada = document.getElementById("NaoVolumeAvariado").value
     }else{
-        alert("Preencha o campo de Peça avariada!")
+        Swal.fire({
+            title: 'Ops!',
+            text: 'Você esqueceu de preencher o campo de Peça avariada!',
+            icon: 'error'
+        });
         return
     }
 
     if(document.getElementById("TransportadoraCampoDeTexto").value != ""){
         var Transportadora = document.getElementById("TransportadoraCampoDeTexto").value
     }else{
-        alert("Preencha o campo de Transportadora!")
+        Swal.fire({
+            title: 'Ops!',
+            text: 'Você esqueceu de preencher o campo de Transportadora!',
+            icon: 'error'
+        });
         return
     }
 
     if(document.getElementById("PlacaCampoDeTexto").value != ""){
         var Placa = document.getElementById("PlacaCampoDeTexto").value
     }else{
-        alert("Preencha o campo de Placa!")
+        Swal.fire({
+            title: 'Ops!',
+            text: 'Você esqueceu de preencher o campo de Placa!',
+            icon: 'error'
+        });
+        return
+    }
+
+    if(document.getElementById("DestinoCampoDeTexto").value != ""){
+        var Destino = document.getElementById("DestinoCampoDeTexto")
+    }else{
+        Swal.fire({
+            title: 'Ops!',
+            text: 'Você esqueceu de preencher o campo de Destino!',
+            icon: 'error'
+        });
+        return
+    }
+
+    if(document.getElementById("HorarioCampoDeTexto").value != ""){
+        var HorarioDeSaida = document.getElementById("HorarioCampoDeTexto").value
+    }else{
+        Swal.fire({
+            title: 'Ops!',
+            text: 'Você esqueceu de preencher o campo de Horário de saída!',
+            icon: 'error'
+        });
+        return
+    }
+
+    if(document.getElementById("CampoDeObs").value != ""){
+        var Obs = document.getElementById("CampoDeObs").value
+    }else{
+        Swal.fire({
+            title: 'Ops!',
+            text: 'Você esqueceu de preencher o campo de Observação!',
+            icon: 'error'
+        });
         return
     }
 
     RelatorioObj = {
         DataAtual: DataFormatada,
         NF: NumeroDaNota,
+        Agrupador: Agrupador,
         Estado: Estado,
         Cidade: Cidade,
         Concessionaria: Concessionaria,
@@ -136,45 +262,23 @@ function RelatorioObject() {
         AcaoTomada: AcaoTomada,
         PecaAvariada: PecaAvariada,
         Transportadora: Transportadora,
-        Placa: Placa
+        Placa: Placa,
+        Destino: Destino,
+        HorarioDeSaida: HorarioDeSaida,
+        Obs: Obs
     }
-}
-
-function RemoverImagens() {
-    DivDeArmazenarImagens.removeChild(DivDeArmazenarImagens, lastChild)
 }
 
 function GerarPDF() {
+    RelatorioObject()
     EffectButton()
-
-            RelatorioObj = {
-        DataAtual: "11/02/2007",
-        NF: "178290",
-        Estado: "Bahia",
-        Cidade: "Xique-Xique",
-        Concessionaria: "BOX-Concessionária",
-        Item: "Parachoque",
-        Embalagem: "Papelão",
-        Problema: "Peça quebrada",
-        AcaoTomada: "Seguiu danificada",
-        PecaAvariada: "Sim",
-        Transportadora: "Jolivann",
-        Placa: "OSKM2939"
-    }
 
     const jsPDF = window.jspdf.jsPDF;    
     var doc = new jsPDF({
         orientation: 'portrait',
         unit: "mm",
-        format: [958, 1500] //x, y
+        format: [958, 1250] //x, y
     });
-
-    // var ImagemAnexada = document.getElementsByClassName("ImagensAnexadas")
-    // Array.from(ImagemAnexada).forEach(Imagem => {
-    //     var imgData = Imagem.src
-    //     doc.addImage(imgData, "JPEG", 10, y, 50, 50)
-    //     y += 60
-    // });
 
     //x1, y1, x2, y2
 
@@ -226,31 +330,31 @@ function GerarPDF() {
     //Informações gerais
 
         //Data e Agrupador
-        doc.text("Data:  01/02/2024", 65, 225)
+        doc.text(RelatorioObj.DataAtual, 65, 225)
         doc.line(108, 229, 220, 229)
-        doc.text("N° da NF:  545123", 700, 225)
+        doc.text("N° da NF:  " + RelatorioObj.NF, 700, 225)
         doc.line(770, 229, 908, 229)
 
         //Embalagem, Peça avariada e Problema
-        doc.text("Embalagem avariada:  Papelão", 65, 280)
+        doc.text("Embalagem avariada:  " + RelatorioObj.Embalagem, 65, 280)
         doc.line(216, 282, 300, 282)
-        doc.text("Peça avariada:  Sim", 400, 280)
+        doc.text("Peça avariada:  " + RelatorioObj.PecaAvariada, 400, 280)
         doc.line(504, 280, 600, 280)
-        doc.text("Problema:  Caixa amassada", 680, 280)
+        doc.text("Problema:  " + RelatorioObj.Problema, 680, 280)
         doc.line(756, 280, 908, 280)
 
         //Ação tomada, Transportadora e Placa
-        doc.text("Ação tomada:  Seguiu danificada", 65, 335)
+        doc.text("Ação tomada:  " + RelatorioObj.AcaoTomada, 65, 335)
         doc.line(164, 335, 300, 335)
-        doc.text("Transportadora:  PENSKE", 400, 335)
+        doc.text("Transportadora:  " + RelatorioObj.Transportadora, 400, 335)
         doc.line(515, 335, 600, 335)
-        doc.text("Placa:  OVK-8293", 680, 335)
+        doc.text("Placa:  " + RelatorioObj.Placa, 680, 335)
         doc.line(730, 335, 908, 335)
 
         //Destino e Horario de saída
-        doc.text("Horário de saída:  17:00", 65, 400)
+        doc.text("Horário de saída:  " + RelatorioObj.HorarioDeSaida, 65, 400)
         doc.line(188, 400, 240, 400)
-        doc.text("Destino  HUB SP/RJ", 400, 400)
+        doc.text("Destino:  " + RelatorioObj.Destino, 400, 400)
         doc.line(458, 400, 600, 400)
 
 
@@ -276,27 +380,27 @@ function GerarPDF() {
         doc.setTextColor(255, 255,  255)
         doc.text("Agrupador", 75, 465)
         doc.setTextColor(0,0,0)
-        doc.text("546789", 75, 490)
+        doc.text(RelatorioObj.Agrupador, 75, 490)
 
         doc.setTextColor(255, 255, 255)
         doc.text("Descrição do item", 190, 465)
         doc.setTextColor(0, 0, 0)
-        doc.text("Para-choque", 190, 490)
+        doc.text(RelatorioObj.Item, 190, 490)
 
         doc.setTextColor(255, 255, 255)
         doc.text("Nome da Concessionária", 400, 465)
         doc.setTextColor(0, 0, 0)
-        doc.text("Katana Veículos LTDA", 400, 490)
+        doc.text(RelatorioObj.Concessionaria, 400, 490)
 
         doc.setTextColor(255, 255, 255)
         doc.text("Estado", 665, 465)
         doc.setTextColor(0, 0, 0)
-        doc.text("GO", 665, 490)
+        doc.text(RelatorioObj.Estado, 665, 490)
 
         doc.setTextColor(255, 255, 255)
         doc.text("Cidade", 785, 465)
         doc.setTextColor(0, 0, 0)
-        doc.text("Goiania", 785, 490)
+        doc.text(RelatorioObj.Cidade, 785, 490)
 
     //Campo das imagens
 
@@ -310,9 +414,9 @@ function GerarPDF() {
         //Imagens
         doc.setLineWidth(2)
         doc.setDrawColor(0,0,0)
-        doc.addImage("./Imgs/Imagem1e2.png", 60, 590, 260, 150)
+        doc.addImage("./Imgs/Imagem.png", 60, 590, 260, 150)
         doc.line(370, 580, 370, 755)
-        doc.addImage("./Imgs/Imagem1e2.png", 420, 590, 260, 150)
+        doc.addImage("./Imgs/Peca.png", 420, 590, 260, 150)
         doc.line(730, 580, 730, 755)
         doc.addImage("./Imgs/Imagem.png", 775, 590, 120, 150)
         doc.line(50, 754, 908, 754)
