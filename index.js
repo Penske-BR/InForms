@@ -14,7 +14,7 @@ function EffectButton(){
     }, 200);
 }
 
-let ArrayDeElementos = []
+var ArrayDeElementos = []
 function ExibirImagensNaTela() {
     for(let i = 0; i < InputDeAnexarImagem.files.length; i++){
         ArrayDeElementos.push(InputDeAnexarImagem.files[i])
@@ -32,7 +32,9 @@ function ExibirImagensNaTela() {
                 return CheckBoxDeDeletar
     }
 
-    ArrayDeElementos.forEach(file => {
+   const promises = ArrayDeElementos.map(file => {
+    return new Promise((resolve) => {
+
         var reader = new FileReader()
         reader.onload = function() {
             var dataURL = reader.result
@@ -42,28 +44,48 @@ function ExibirImagensNaTela() {
             img.className = "ImagensAnexadas"
             img.src = dataURL
             img.title = "Foto da embalagem"
+            file.imgURL = img.src
             ExibirBotaoDeDeletar(imgContainer)
             imgContainer.appendChild(img)
             labelDeArmazenarImagens.appendChild(imgContainer)
+            resolve(file)
         }
         reader.readAsDataURL(file)
     })
+    })
+    return Promise.all(promises)
 }
 
-BotaoDeExcluirImagem.addEventListener("click", function(event) {
-    event.preventDefault()
-
-    const ArrayDasImagens = Array.from(labelDeArmazenarImagens.getElementsByClassName("imgContainer"))
-
-    for(let i = ArrayDasImagens.length -1; i >= 0; i--){
-        const container = ArrayDasImagens[i]
-        const checkbox = container.getElementsByTagName("input")[0]
-        if(checkbox.checked){
-            labelDeArmazenarImagens.removeChild(container)
-            ArrayDeElementos.splice(i, 1)
-        }
+function outraFuncao() {
+    ExibirImagensNaTela().then(() => {
+        console.log(ArrayDeElementos[0].imgURL)
+    }).catch(error => {
+        console.error("Erro", error)
+    })
     }
-})
+
+    BotaoDeExcluirImagem.addEventListener("click", function(event) {
+        event.preventDefault()
+
+        const ArrayDasImagens = Array.from(labelDeArmazenarImagens.getElementsByClassName("imgContainer"))
+    
+        for (let i = ArrayDasImagens.length - 1; i >= 0; i--) {
+            const container = ArrayDasImagens[i]
+            const checkbox = container.getElementsByTagName("input")[0]
+            if (checkbox.checked) {
+                ArrayDeElementos.splice(i, 1)
+                labelDeArmazenarImagens.removeChild(container);
+                InputDeAnexarImagem.value = ""
+                return
+            }
+        }
+    
+        Swal.fire({
+            title: 'Ops!',
+            text: 'Você esqueceu de selecionar uma imagem!',
+            icon: 'error'
+        });
+    });
 
 let RelatorioObj = {}
 function RelatorioObject() {
@@ -219,7 +241,7 @@ function RelatorioObject() {
     }
 
     if(document.getElementById("DestinoCampoDeTexto").value != ""){
-        var Destino = document.getElementById("DestinoCampoDeTexto")
+        var Destino = document.getElementById("DestinoCampoDeTexto").value
     }else{
         Swal.fire({
             title: 'Ops!',
@@ -246,6 +268,15 @@ function RelatorioObject() {
         Swal.fire({
             title: 'Ops!',
             text: 'Você esqueceu de preencher o campo de Observação!',
+            icon: 'error'
+        });
+        return
+    }
+
+    if(ArrayDeElementos.length == 0 || undefined){
+        Swal.fire({
+            title: 'Ops!',
+            text: 'Você esqueceu de preencher o campo de Imagens!',
             icon: 'error'
         });
         return
@@ -416,7 +447,8 @@ function GerarPDF() {
         //Imagens
         doc.setLineWidth(2)
         doc.setDrawColor(0,0,0)
-        doc.addImage("./Imgs/Imagem.png", 60, 590, 260, 150)
+        
+        doc.addImage(ArrayDeElementos[0].imgURL, 60, 590, 260, 150)
         doc.line(370, 580, 370, 755)
         doc.addImage("./Imgs/Peca.png", 420, 590, 260, 150)
         doc.line(730, 580, 730, 755)
@@ -433,5 +465,6 @@ function GerarPDF() {
         doc.line(100, 1000, 854, 1000)
         doc.line(100, 1050, 854, 1050)
 
+    console.log(RelatorioObj.Destino)
     doc.save("Relatorio.pdf")
 }
