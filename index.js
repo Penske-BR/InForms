@@ -16,6 +16,15 @@ function EffectButton(){
 
 var ArrayDeElementos = []
 function ExibirImagensNaTela() {
+    if(ArrayDeElementos.length == 3){
+        Swal.fire({
+            title: 'Ops!',
+            text: 'Você só pode adicionar até 3 imagens!',
+            icon: 'error'
+        })
+        console.log(ArrayDeElementos)
+        return
+    }
     for(let i = 0; i < InputDeAnexarImagem.files.length; i++){
         ArrayDeElementos.push(InputDeAnexarImagem.files[i])
     }
@@ -273,10 +282,10 @@ function RelatorioObject() {
         return
     }
 
-    if(ArrayDeElementos.length == 0 || undefined){
+    if(ArrayDeElementos.length < 3){
         Swal.fire({
             title: 'Ops!',
-            text: 'Você esqueceu de preencher o campo de Imagens!',
+            text: 'Você esqueceu de preencher o campo de Imagens com até 3 imagens!',
             icon: 'error'
         });
         return
@@ -450,9 +459,9 @@ function GerarPDF() {
         
         doc.addImage(ArrayDeElementos[0].imgURL, 60, 590, 260, 150)
         doc.line(370, 580, 370, 755)
-        doc.addImage("./Imgs/Peca.png", 420, 590, 260, 150)
+        doc.addImage(ArrayDeElementos[1].imgURL, 420, 590, 260, 150)
         doc.line(730, 580, 730, 755)
-        doc.addImage("./Imgs/Imagem.png", 775, 590, 120, 150)
+        doc.addImage(ArrayDeElementos[2].imgURL, 775, 590, 120, 150)
         doc.line(50, 754, 908, 754)
 
         //Campo de obs
@@ -464,7 +473,20 @@ function GerarPDF() {
         doc.line(100, 950, 854, 950)
         doc.line(100, 1000, 854, 1000)
         doc.line(100, 1050, 854, 1050)
+        
+        var w = 105;
+        var h = 798;
+        var maxWidth = 750;
 
-    console.log(RelatorioObj.Destino)
+        var linhas = doc.splitTextToSize(RelatorioObj.Obs, maxWidth);
+
+for (var i = 0; i < linhas.length; i++) {
+    if (i > 0) {
+        h = h + 50;
+        w = 105;
+    }
+    doc.text(linhas[i], w, h);
+}
+
     doc.save("Relatorio.pdf")
 }
