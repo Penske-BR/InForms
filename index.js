@@ -488,5 +488,5 @@ for (var i = 0; i < linhas.length; i++) {
     doc.text(linhas[i], w, h);
 }
 
-    doc.save("Relatorio.pdf")
+    doc.save(RelatorioObj.NF + ".pdf")
 }
