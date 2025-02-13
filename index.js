@@ -473,7 +473,7 @@ function GerarPDF() {
         var h = 798;
         var maxWidth = 750;
 
-        var linhas = doc.splitTextToSize(RelatorioObj.Obs, maxWidth);
+        var linhas = doc.splitTextToSize(RelatorioObj.Obs, maxWidth)
 
 for (var i = 0; i < linhas.length; i++) {
     if (i > 0) {
