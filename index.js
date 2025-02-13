@@ -274,12 +274,7 @@ function RelatorioObject() {
     if(document.getElementById("CampoDeObs").value != ""){
         var Obs = document.getElementById("CampoDeObs").value
     }else{
-        Swal.fire({
-            title: 'Ops!',
-            text: 'Você esqueceu de preencher o campo de Observação!',
-            icon: 'error'
-        });
-        return
+        var Obs = ""
     }
 
     if(ArrayDeElementos.length < 3){
@@ -366,14 +361,14 @@ function GerarPDF() {
 
         //Revisão
         doc.line(788, 100, 788, 170)
-        doc.text("Revisão: 00", 810, 140)
+        doc.text("Revisão: 01", 810, 140)
 
 
     //Informações gerais
 
         //Data e Agrupador
         doc.text(RelatorioObj.DataAtual, 65, 225)
-        doc.line(108, 229, 220, 229)
+        doc.line(65, 229, 220, 229)
         doc.text("N° da NF:  " + RelatorioObj.NF, 700, 225)
         doc.line(770, 229, 908, 229)
 
@@ -437,12 +432,12 @@ function GerarPDF() {
         doc.setTextColor(255, 255, 255)
         doc.text("Estado", 665, 465)
         doc.setTextColor(0, 0, 0)
-        doc.text(RelatorioObj.Estado, 665, 490)
+        doc.text(RelatorioObj.Estado, 630, 490)
 
         doc.setTextColor(255, 255, 255)
         doc.text("Cidade", 785, 465)
         doc.setTextColor(0, 0, 0)
-        doc.text(RelatorioObj.Cidade, 785, 490)
+        doc.text(RelatorioObj.Cidade, 755, 490)
 
     //Campo das imagens
 
@@ -487,6 +482,6 @@ for (var i = 0; i < linhas.length; i++) {
     }
     doc.text(linhas[i], w, h);
 }
-
     doc.save(RelatorioObj.NF + ".pdf")
 }
+
