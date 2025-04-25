@@ -25,7 +25,7 @@
             <div class="centralizarAlternativasFlex">
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="NFCaixaDeTexto" type="text" name="InputDeNF" placeholder="NF..." maxlength="15"></div>
+                    <input class="TextCheckbox" id="NFCaixaDeTexto" type="text" name="NF" placeholder="NF..." maxlength="15"></div>
 
             </div>
         </label>
@@ -37,7 +37,7 @@
             <div class="centralizarAlternativasFlex">
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="AgrupadorCaixaDeTexto" type="text" name="InputDeAgrupador" placeholder="Agrupador..." maxlength="10"></div>
+                    <input class="TextCheckbox" id="AgrupadorCaixaDeTexto" type="text" name="Agrupador" placeholder="Agrupador..." maxlength="10"></div>
 
             </div>
         </label>
@@ -49,24 +49,24 @@
             <div class="centralizarAlternativasFlex">
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="EstadoCampoDeTexto" type="text" name="InputDeEstado" placeholder="Estado..." maxlength="10"></div>
+                    <input class="TextCheckbox" id="EstadoCampoDeTexto" type="text" name="Estado" placeholder="Estado..." maxlength="10"></div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="CidadeCampoDeTexto" type="text" name="InputDeCidade" placeholder="Cidade..." maxlength="16"></div>
+                    <input class="TextCheckbox" id="CidadeCampoDeTexto" type="text" name="Cidade" placeholder="Cidade..." maxlength="16"></div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="ConcessionariaCampoDeTexto" type="text" name="Concessionaria" placeholder="Concessionaria..." maxlength="24"></div>
+                    <input class="TextCheckbox" id="ConcessionariaCampoDeTexto" type="text" name="Concessionária" placeholder="Concessionária..." maxlength="24"></div>
 
             </div>
         </label>
 
-        <label for="QuestaoItem" id="QuestaoItem" class="CaixaDePergunta">
+        <label for="QuestaoPartNumber" id="QuestaoPartNumber" class="CaixaDePergunta">
             <span class="Pergunta">Part number</span>
 
             <div class="centralizarAlternativasFlex">
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="ItemCampoDeTexto" type="text" name="ItemCampoDeTexto" placeholder="Item..." maxlength="20"></div>
+                    <input class="TextCheckbox" id="PartNumberCampoDeTexto" type="text" name="Part Number" placeholder="Part Number..." maxlength="20"></div>
 
             </div>
         </label>
@@ -76,7 +76,8 @@
 
             <div class="centralizarAlternativasFlex">
                 <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="EmbalagemCampoDeTexto" type="text" name="Embalagem" placeholder="Material..." maxlength="10"></div>
+                    <input class="TextCheckbox" id="EmbalagemCampoDeTexto" type="text" name="Material da embalagem" placeholder="Material..." maxlength="10">
+                </div>
             </div>
         </label>
 
@@ -86,7 +87,7 @@
             <div class="centralizarAlternativasFlex">
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="ProblemaCampoDeTexto" type="text" name="ProblemaCampoDeTexto" placeholder="Problema..." maxlength="17"></div>
+                    <input class="TextCheckbox" id="ProblemaCampoDeTexto" type="text" name="Descreva o Problema" placeholder="Problema..." maxlength="17"></div>
 
             </div>
         </label>
@@ -97,15 +98,15 @@
             <div class="centralizarAlternativasFlex">
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="TrocarEmbalagem" type="radio" name="AcaoTomada" value="Troca da embalagem">Troca da embalagem</div>
+                    <input class="checkboxs" id="TrocarEmbalagem" type="radio" name="Ação Tomada" value="Troca da embalagem">Troca da embalagem</div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="RepararEmbalagem" type="radio" name="AcaoTomada" value="Reparo da embalagem">
+                    <input class="checkboxs" id="RepararEmbalagem" type="radio" name="Ação Tomada" value="Reparo da embalagem">
                     Reparo da embalagem
                 </div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="SeguirDanificada" type="radio" name="AcaoTomada" value="Seguiu danificada">Seguiu danificada</div>
+                    <input class="checkboxs" id="SeguirDanificada" type="radio" name="Ação Tomada" value="Seguiu danificada">Seguiu danificada</div>
 
             </div>
         </label>
@@ -116,10 +117,10 @@
 
             <div class="centralizarAlternativasFlex">
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="SimVolumeAvariado" type="radio" name="Avariado" value="Sim">Sim</div>
+                    <input class="checkboxs" id="SimVolumeAvariado" type="radio" name="Peça avariada" value="Sim">Sim</div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="NaoVolumeAvariado" type="radio" name="Avariado" value="Não">Não
+                    <input class="checkboxs" id="NaoVolumeAvariado" type="radio" name="Peça avariada" value="Não">Não
                 </div>
             </div>
         </label>
@@ -160,7 +161,7 @@
             <div class="centralizarAlternativasFlex">
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="HorarioCampoDeTexto" type="text" name="Horario" placeholder="Horário..." maxlength="5"></div>
+                    <input class="TextCheckbox" id="HorarioCampoDeTexto" type="text" name="Horário de saída" placeholder="Horário..." maxlength="5"></div>
             </div>
         </label>
 
@@ -185,7 +186,7 @@
 
     </form>
 
-    <div id="centralizarButtonFlex"><button id="BotaoDeBaixar" onclick="GerarPDF()">Baixar relatório</button></div>
+    <div id="centralizarButtonFlex"><button id="BotaoDeBaixar">Baixar relatório</button></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" referrerpolicy="no-referrer"></script>
 

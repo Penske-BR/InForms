@@ -3,7 +3,6 @@ const downloadButton = document.getElementById("BotaoDeBaixar")
 const labelDeArmazenarImagens = document.getElementById("CentralizarImagensFlex")
 const BotaoDeExcluirImagem = document.getElementById("BotaoDeExcluirImagem")
 const InputDeAnexarImagem = document.getElementById("InputDeAnexarImagem")
-const btnTest = document.getElementById("btnTest")
 
 function EffectButton(){
     downloadButton.style.backgroundColor = "black"
@@ -13,20 +12,31 @@ function EffectButton(){
         downloadButton.removeAttribute("style")
     }, 200);
 }
+function ValidarCampoDeTexto(id) {
+    const campo = document.getElementById(id)
+    if(!campo.value){
+        Swal.fire({
+            title: "Ops!",
+            html: `O preenchimento do campo de <span style="font-weight: bold;">${campo.name}</span> é obrigatório!`,
+            icon: "error"
+        })
+        throw new Error("Campo inválido");
+    }
+    return campo.value
+}
 
-var ArrayDeElementos = []
+var ImagesList = []
 function ExibirImagensNaTela() {
-    if(ArrayDeElementos.length == 3){
+    if(ImagesList.length == 3){
         Swal.fire({
             title: 'Ops!',
             text: 'Você só pode adicionar até 3 imagens!',
             icon: 'error'
         })
-        console.log(ArrayDeElementos)
         return
     }
     for(let i = 0; i < InputDeAnexarImagem.files.length; i++){
-        ArrayDeElementos.push(InputDeAnexarImagem.files[i])
+        ImagesList.push(InputDeAnexarImagem.files[i])
     }
 
     while (labelDeArmazenarImagens.firstChild) {
@@ -41,7 +51,7 @@ function ExibirImagensNaTela() {
                 return CheckBoxDeDeletar
     }
 
-   const promises = ArrayDeElementos.map(file => {
+   const promises = ImagesList.map(file => {
     return new Promise((resolve) => {
 
         var reader = new FileReader()
@@ -65,14 +75,6 @@ function ExibirImagensNaTela() {
     return Promise.all(promises)
 }
 
-function outraFuncao() {
-    ExibirImagensNaTela().then(() => {
-        console.log(ArrayDeElementos[0].imgURL)
-    }).catch(error => {
-        console.error("Erro", error)
-    })
-    }
-
     BotaoDeExcluirImagem.addEventListener("click", function(event) {
         event.preventDefault()
 
@@ -82,7 +84,7 @@ function outraFuncao() {
             const container = ArrayDasImagens[i]
             const checkbox = container.getElementsByTagName("input")[0]
             if (checkbox.checked) {
-                ArrayDeElementos.splice(i, 1)
+                ImagesList.splice(i, 1)
                 labelDeArmazenarImagens.removeChild(container);
                 InputDeAnexarImagem.value = ""
                 return
@@ -97,7 +99,7 @@ function outraFuncao() {
     });
 
 let RelatorioObj = {}
-function RelatorioObject() {
+function obterDadosPDF() {
     let DataAtual = new Date()
     let dia = String(DataAtual.getDate()).padStart(2, "0")
     let mes = String(DataAtual.getMonth() + 1).padStart(2, "0")
@@ -106,95 +108,14 @@ function RelatorioObject() {
     let minuto = String(DataAtual.getMinutes()).padStart(2, "0")
     let DataFormatada = `${dia}/${mes}/${ano} - ${hora}:${minuto}`
 
-    if(document.getElementById("NFCaixaDeTexto").value != ""){
-    var NumeroDaNota = document.getElementById("NFCaixaDeTexto").value
-    }
-    else{
-        Swal.fire({
-            title: 'Ops!',
-            text: 'Você esqueceu de preencher o campo de NF!',
-            icon: 'error'
-        });
-        return
-    }
-
-    if(document.getElementById("AgrupadorCaixaDeTexto").value != ""){
-        var Agrupador = document.getElementById("AgrupadorCaixaDeTexto").value
-    }else{
-        Swal.fire({
-            title: 'Ops!',
-            text: 'Você esqueceu de preencher o campo de Agrupador!',
-            icon: 'error'
-        });
-        return
-    }
-
-    if(document.getElementById("EstadoCampoDeTexto").value != ""){
-        var Estado = document.getElementById("EstadoCampoDeTexto").value
-    }
-    else{
-        Swal.fire({
-            title: 'Ops!',
-            text: 'Você esqueceu de preencher o campo de Estado!',
-            icon: 'error'
-        });
-        return
-    }
-    if(document.getElementById("CidadeCampoDeTexto").value != ""){
-        var Cidade = document.getElementById("CidadeCampoDeTexto").value
-    }
-    else{
-        Swal.fire({
-            title: 'Ops!',
-            text: 'Você esqueceu de preencher o campo de Cidade!',
-            icon: 'error'
-        });
-        return
-    }
-
-    if(document.getElementById("ConcessionariaCampoDeTexto").value != ""){
-        var Concessionaria = document.getElementById("ConcessionariaCampoDeTexto").value
-    }else{
-        Swal.fire({
-            title: 'Ops!',
-            text: 'Você esqueceu de preencher o campo de Concessionária!',
-            icon: 'error'
-        });
-        return
-    }
-
-    if(document.getElementById("ItemCampoDeTexto").value != ""){
-        var Item = document.getElementById("ItemCampoDeTexto").value   
-    }else{
-        Swal.fire({
-            title: 'Ops!',
-            text: 'Você esqueceu de preencher o campo de Item!',
-            icon: 'error'
-        });
-        return
-    }
-
-    if(document.getElementById("EmbalagemCampoDeTexto").value != ""){
-        var Embalagem = document.getElementById("EmbalagemCampoDeTexto").value
-    }else{
-        Swal.fire({
-            title: 'Ops!',
-            text: 'Você esqueceu de preencher o campo de Embalagem!',
-            icon: 'error'
-        });
-        return
-    }
-
-    if(document.getElementById("ProblemaCampoDeTexto").value != ""){
-        var Problema = document.getElementById("ProblemaCampoDeTexto").value
-    }else{
-        Swal.fire({
-            title: 'Ops!',
-            text: 'Você esqueceu de preencher o campo de Problema!',
-            icon: 'error'
-        });
-        return
-    }
+    const NF = ValidarCampoDeTexto("NFCaixaDeTexto")
+    const Agrupador = ValidarCampoDeTexto("AgrupadorCaixaDeTexto")
+    const Estado = ValidarCampoDeTexto("EstadoCampoDeTexto")
+    const Cidade = ValidarCampoDeTexto("CidadeCampoDeTexto")
+    const Concessionaria = ValidarCampoDeTexto("ConcessionariaCampoDeTexto")
+    const PartNumber = ValidarCampoDeTexto("PartNumberCampoDeTexto")
+    const Embalagem = ValidarCampoDeTexto("EmbalagemCampoDeTexto")
+    const Problema = ValidarCampoDeTexto("ProblemaCampoDeTexto")
 
     if(document.getElementById("TrocarEmbalagem").checked){
         var AcaoTomada = document.getElementById("TrocarEmbalagem").value
@@ -207,7 +128,7 @@ function RelatorioObject() {
     }else{
         Swal.fire({
             title: 'Ops!',
-            text: 'Você esqueceu de preencher o campo de Ação tomada!',
+            html: 'Você esqueceu de preencher o campo de <span style="font-weight: bold;">Ação tomada</span>!',
             icon: 'error'
         });
         return
@@ -221,55 +142,16 @@ function RelatorioObject() {
     }else{
         Swal.fire({
             title: 'Ops!',
-            text: 'Você esqueceu de preencher o campo de Peça avariada!',
+            html: 'Você esqueceu de preencher o campo de <span style="font-weight: bold;">Peça avariada</span>!',
             icon: 'error'
         });
         return
     }
 
-    if(document.getElementById("TransportadoraCampoDeTexto").value != ""){
-        var Transportadora = document.getElementById("TransportadoraCampoDeTexto").value
-    }else{
-        Swal.fire({
-            title: 'Ops!',
-            text: 'Você esqueceu de preencher o campo de Transportadora!',
-            icon: 'error'
-        });
-        return
-    }
-
-    if(document.getElementById("PlacaCampoDeTexto").value != ""){
-        var Placa = document.getElementById("PlacaCampoDeTexto").value
-    }else{
-        Swal.fire({
-            title: 'Ops!',
-            text: 'Você esqueceu de preencher o campo de Placa!',
-            icon: 'error'
-        });
-        return
-    }
-
-    if(document.getElementById("DestinoCampoDeTexto").value != ""){
-        var Destino = document.getElementById("DestinoCampoDeTexto").value
-    }else{
-        Swal.fire({
-            title: 'Ops!',
-            text: 'Você esqueceu de preencher o campo de Destino!',
-            icon: 'error'
-        });
-        return
-    }
-
-    if(document.getElementById("HorarioCampoDeTexto").value != ""){
-        var HorarioDeSaida = document.getElementById("HorarioCampoDeTexto").value
-    }else{
-        Swal.fire({
-            title: 'Ops!',
-            text: 'Você esqueceu de preencher o campo de Horário de saída!',
-            icon: 'error'
-        });
-        return
-    }
+    const Transportadora = ValidarCampoDeTexto("TransportadoraCampoDeTexto")
+    const Placa = ValidarCampoDeTexto("PlacaCampoDeTexto")
+    const Destino = ValidarCampoDeTexto("DestinoCampoDeTexto")
+    const HorarioDeSaida = ValidarCampoDeTexto("HorarioCampoDeTexto")
 
     if(document.getElementById("CampoDeObs").value != ""){
         var Obs = document.getElementById("CampoDeObs").value
@@ -277,7 +159,7 @@ function RelatorioObject() {
         var Obs = ""
     }
 
-    if(ArrayDeElementos.length < 3){
+    if(ImagesList.length < 3){
         Swal.fire({
             title: 'Ops!',
             text: 'Você esqueceu de preencher o campo de Imagens com até 3 imagens!',
@@ -288,12 +170,12 @@ function RelatorioObject() {
 
     RelatorioObj = {
         DataAtual: DataFormatada,
-        NF: NumeroDaNota,
+        NF: NF,
         Agrupador: Agrupador,
         Estado: Estado,
         Cidade: Cidade,
         Concessionaria: Concessionaria,
-        Item: Item,
+        PartNumber: PartNumber,
         Embalagem: Embalagem,
         Problema: Problema,
         AcaoTomada: AcaoTomada,
@@ -307,8 +189,7 @@ function RelatorioObject() {
 }
 
 function GerarPDF() {
-    RelatorioObject()
-    EffectButton()
+    obterDadosPDF()
 
     const jsPDF = window.jspdf.jsPDF;    
     var doc = new jsPDF({
@@ -420,9 +301,9 @@ function GerarPDF() {
         doc.text(RelatorioObj.Agrupador, 75, 490)
 
         doc.setTextColor(255, 255, 255)
-        doc.text("Descrição do item", 190, 465)
+        doc.text("Descrição do PartNumber", 190, 465)
         doc.setTextColor(0, 0, 0)
-        doc.text(RelatorioObj.Item, 190, 490)
+        doc.text(RelatorioObj.PartNumber, 190, 490)
 
         doc.setTextColor(255, 255, 255)
         doc.text("Nome da Concessionária", 400, 465)
@@ -452,11 +333,11 @@ function GerarPDF() {
         doc.setLineWidth(2)
         doc.setDrawColor(0,0,0)
         
-        doc.addImage(ArrayDeElementos[0].imgURL, 60, 590, 260, 150)
+        doc.addImage(ImagesList[0].imgURL, 60, 590, 260, 150)
         doc.line(370, 580, 370, 755)
-        doc.addImage(ArrayDeElementos[1].imgURL, 420, 590, 260, 150)
+        doc.addImage(ImagesList[1].imgURL, 420, 590, 260, 150)
         doc.line(730, 580, 730, 755)
-        doc.addImage(ArrayDeElementos[2].imgURL, 775, 590, 120, 150)
+        doc.addImage(ImagesList[2].imgURL, 775, 590, 120, 150)
         doc.line(50, 754, 908, 754)
 
         //Campo de obs
@@ -469,19 +350,22 @@ function GerarPDF() {
         doc.line(100, 1000, 854, 1000)
         doc.line(100, 1050, 854, 1050)
         
-        var w = 105;
-        var h = 798;
+        var width = 105;
+        var height = 798;
         var maxWidth = 750;
 
         var linhas = doc.splitTextToSize(RelatorioObj.Obs, maxWidth)
 
 for (var i = 0; i < linhas.length; i++) {
     if (i > 0) {
-        h = h + 50;
-        w = 105;
+        height = height + 50;
+        width = 105;
     }
-    doc.text(linhas[i], w, h);
+    doc.text(linhas[i], width, height);
 }
     doc.save(RelatorioObj.NF + ".pdf")
+    
+    EffectButton()
 }
 
+downloadButton.addEventListener("click", () => GerarPDF())
