@@ -4,7 +4,7 @@ const labelDeArmazenarImagens = document.getElementById("CentralizarImagensFlex"
 const BotaoDeExcluirImagem = document.getElementById("BotaoDeExcluirImagem")
 const InputDeAnexarImagem = document.getElementById("InputDeAnexarImagem")
 
-function EffectButton(){
+function EfeitoDeBotao(){
     downloadButton.style.backgroundColor = "black"
     downloadButton.style.color = "white"
     downloadButton.style.border = "2px solid white"
@@ -12,6 +12,7 @@ function EffectButton(){
         downloadButton.removeAttribute("style")
     }, 200);
 }
+
 function ValidarCampoDeTexto(id) {
     const campo = document.getElementById(id)
     if(!campo.value){
@@ -24,6 +25,23 @@ function ValidarCampoDeTexto(id) {
     }
     return campo.value
 }
+
+function validarCheckBox(id) {
+    const checkboxes = document.querySelectorAll(id)
+  
+    for (let i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].checked) {
+        return checkboxes[i].value
+      }
+    }
+    Swal.fire({
+        title: "Ops!",
+        html: `O preenchimento do campo de <span style="font-weight: bold;">${checkboxes[0].name}</span> é obrigatório!`,
+        icon: "error"
+    })
+    throw new Error("Nenhum checkbox foi marcado")
+  }
+  
 
 var ImagesList = []
 function ExibirImagensNaTela() {
@@ -117,36 +135,8 @@ function obterDadosPDF() {
     const Embalagem = ValidarCampoDeTexto("EmbalagemCampoDeTexto")
     const Problema = ValidarCampoDeTexto("ProblemaCampoDeTexto")
 
-    if(document.getElementById("TrocarEmbalagem").checked){
-        var AcaoTomada = document.getElementById("TrocarEmbalagem").value
-    }
-    else if(document.getElementById("RepararEmbalagem").checked){
-        var AcaoTomada = document.getElementById("RepararEmbalagem").value
-    }
-    else if(document.getElementById("SeguirDanificada").checked){
-        var AcaoTomada = document.getElementById("SeguirDanificada").value
-    }else{
-        Swal.fire({
-            title: 'Ops!',
-            html: 'Você esqueceu de preencher o campo de <span style="font-weight: bold;">Ação tomada</span>!',
-            icon: 'error'
-        });
-        return
-    }
-
-    if(document.getElementById("SimVolumeAvariado").checked){
-        var PecaAvariada = document.getElementById("SimVolumeAvariado").value
-    }
-    else if(document.getElementById("NaoVolumeAvariado").checked){
-        var PecaAvariada = document.getElementById("NaoVolumeAvariado").value
-    }else{
-        Swal.fire({
-            title: 'Ops!',
-            html: 'Você esqueceu de preencher o campo de <span style="font-weight: bold;">Peça avariada</span>!',
-            icon: 'error'
-        });
-        return
-    }
+    const AcaoTomada = validarCheckBox(".AcaoTomada")
+    const PecaAvariada = validarCheckBox(".Peca")
 
     const Transportadora = ValidarCampoDeTexto("TransportadoraCampoDeTexto")
     const Placa = ValidarCampoDeTexto("PlacaCampoDeTexto")
@@ -162,7 +152,7 @@ function obterDadosPDF() {
     if(ImagesList.length < 3){
         Swal.fire({
             title: 'Ops!',
-            text: 'Você esqueceu de preencher o campo de Imagens com até 3 imagens!',
+            text: 'Você esqueceu de preencher o campo de Imagens com 3 imagens!',
             icon: 'error'
         });
         return
@@ -365,7 +355,7 @@ for (var i = 0; i < linhas.length; i++) {
 }
     doc.save(RelatorioObj.NF + ".pdf")
     
-    EffectButton()
+    EfeitoDeBotao()
 }
 
 downloadButton.addEventListener("click", () => GerarPDF())
