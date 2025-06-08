@@ -7,7 +7,7 @@ InForms é um sistema simples e direto para o registro de inconformidades em mer
 - Formulário para registro de inconformidades
 - Geração automática de um PDF com os dados preenchidos
 - Interface simples e responsiva
-- Integração com a biblioteca [jsPDF](https://github.com/parallax/jsPDF) para criação do PDF
+- Integração com a biblioteca jsPDF https://github.com/parallax/jsPDF para criação do PDF
 - Hospedado via GitHub Pages https://penske-br.github.io/InForms/
 
 ## 🚀 Tecnologias utilizadas
@@ -15,9 +15,9 @@ InForms é um sistema simples e direto para o registro de inconformidades em mer
 - HTML5
 - CSS3
 - JavaScript (Vanilla)
-- [jsPDF](https://cdnjs.com/libraries/jspdf)
+- jsPDF https://cdnjs.com/libraries/jspdf
 
 ## Como acessar?
 
-- Acesse https://penske-br.github.io/InForms/
-- Clone o repositório https://github.com/Penske-BR/InForms e rode localmente na sua máquina
+- Acesse: https://penske-br.github.io/InForms/
+- Clone o repositório: https://github.com/Penske-BR/InForms e rode localmente na sua máquina
