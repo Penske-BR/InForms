@@ -12,37 +12,7 @@ function EfeitoDeBotao(){
         downloadButton.removeAttribute("style")
     }, 200);
 }
-
-function ValidarCampoDeTexto(id) {
-    const campo = document.getElementById(id)
-    if(!campo.value){
-        Swal.fire({
-            title: "Ops!",
-            html: `O preenchimento do campo de <span style="font-weight: bold;">${campo.name}</span> é obrigatório!`,
-            icon: "error"
-        })
-        throw new Error("Campo inválido");
-    }
-    return campo.value
-}
-
-function validarCheckBox(id) {
-    const checkboxes = document.querySelectorAll(id)
   
-    for (let i = 0; i < checkboxes.length; i++) {
-      if (checkboxes[i].checked) {
-        return checkboxes[i].value
-      }
-    }
-    Swal.fire({
-        title: "Ops!",
-        html: `O preenchimento do campo de <span style="font-weight: bold;">${checkboxes[0].name}</span> é obrigatório!`,
-        icon: "error"
-    })
-    throw new Error("Nenhum checkbox foi marcado")
-  }
-  
-
 var ImagesList = []
 function ExibirImagensNaTela() {
     if(ImagesList.length == 3){
@@ -118,37 +88,32 @@ function ExibirImagensNaTela() {
 
 let RelatorioObj = {}
 function obterDadosPDF() {
-    let DataAtual = new Date()
-    let dia = String(DataAtual.getDate()).padStart(2, "0")
-    let mes = String(DataAtual.getMonth() + 1).padStart(2, "0")
-    let ano = DataAtual.getFullYear()
-    let hora = String(DataAtual.getHours()).padStart(2, "0")
-    let minuto = String(DataAtual.getMinutes()).padStart(2, "0")
-    let DataFormatada = `${dia}/${mes}/${ano} - ${hora}:${minuto}`
+    
+    const validar = new Validar()
+    const DataFormatada = new DataAtual()
 
-    const NF = ValidarCampoDeTexto("NFCaixaDeTexto")
-    const Agrupador = ValidarCampoDeTexto("AgrupadorCaixaDeTexto")
-    const Estado = ValidarCampoDeTexto("EstadoCampoDeTexto")
-    const Cidade = ValidarCampoDeTexto("CidadeCampoDeTexto")
-    const Concessionaria = ValidarCampoDeTexto("ConcessionariaCampoDeTexto")
-    const PartNumber = ValidarCampoDeTexto("PartNumberCampoDeTexto")
-    const Embalagem = ValidarCampoDeTexto("EmbalagemCampoDeTexto")
-    const Problema = ValidarCampoDeTexto("ProblemaCampoDeTexto")
+    const NF = validar.ValidarCampoDeTexto("NFCaixaDeTexto")
+    const Agrupador = validar.ValidarCampoDeTexto("AgrupadorCaixaDeTexto")
+    const Estado = validar.ValidarCampoDeTexto("EstadoCampoDeTexto")
+    const Cidade = validar.ValidarCampoDeTexto("CidadeCampoDeTexto")
+    const Concessionaria = validar.ValidarCampoDeTexto("ConcessionariaCampoDeTexto")
+    const PartNumber = validar.ValidarCampoDeTexto("PartNumberCampoDeTexto")
+    const Embalagem = validar.ValidarCampoDeTexto("EmbalagemCampoDeTexto")
+    const Problema = validar.ValidarCampoDeTexto("ProblemaCampoDeTexto")
 
-    const AcaoTomada = validarCheckBox(".AcaoTomada")
-    const PecaAvariada = validarCheckBox(".Peca")
+    const AcaoTomada = validar.validarCheckBox(".AcaoTomada")
+    const PecaAvariada = validar.validarCheckBox(".Peca")
 
-    const Transportadora = ValidarCampoDeTexto("TransportadoraCampoDeTexto")
-    const Placa = ValidarCampoDeTexto("PlacaCampoDeTexto")
-    const Destino = ValidarCampoDeTexto("DestinoCampoDeTexto")
-    const HorarioDeSaida = ValidarCampoDeTexto("HorarioCampoDeTexto")
+    const Transportadora = validar.ValidarCampoDeTexto("TransportadoraCampoDeTexto")
+    const Placa = validar.ValidarCampoDeTexto("PlacaCampoDeTexto")
+    const Destino = validar.ValidarCampoDeTexto("DestinoCampoDeTexto")
+    const HorarioDeSaida = validar.ValidarCampoDeTexto("HorarioCampoDeTexto")
 
-    if(document.getElementById("CampoDeObs").value != ""){
-        var Obs = document.getElementById("CampoDeObs").value
-    }else{
-        var Obs = ""
-    }
+    const Obs = validar.validarCampoDeOBS()
 
+
+    //TODO 
+    // verificar a quantidade exata de imagens antes de modularizar a verificação das imagens.
     if(ImagesList.length < 3){
         Swal.fire({
             title: 'Ops!',
