@@ -1,19 +1,19 @@
-class Validar {
+class Validate {
 
-  ValidarCampoDeTexto = (id) =>{
-    const campo = document.getElementById(id)
-    if(!campo.value){
+  checkTextField(id) {
+    const field = document.getElementById(id)
+    if(!field.value){
         Swal.fire({
             title: "Ops!",
-            html: `O preenchimento do campo de <span style="font-weight: bold;">${campo.name}</span> é obrigatório!`,
+            html: `O preenchimento do campo de <span style="font-weight: bold;">${field.name}</span> é obrigatório!`,
             icon: "error"
         })
         throw new Error("Campo inválido");
     }
-    return campo.value
+    return field.value
  }
 
-  validarCheckBox = (id) => {
+  checkCheckBoxField(id) {
     const checkboxes = document.querySelectorAll(id)
   
     for (let i = 0; i < checkboxes.length; i++) {
@@ -29,7 +29,7 @@ class Validar {
     throw new Error("Nenhum checkbox foi marcado")
   }
 
-  validarCampoDeOBS = () => {    
+  checkObsField () {    
     if(document.getElementById("CampoDeObs").value != ""){
         var Obs = document.getElementById("CampoDeObs").value
         return Obs
@@ -40,15 +40,15 @@ class Validar {
   }
 }
 
-class DataAtual {
-    gerarDataAtual() {
-        let DataAtual = new Date()
-        let dia = String(DataAtual.getDate()).padStart(2, "0")
-        let mes = String(DataAtual.getMonth() + 1).padStart(2, "0")
-        let ano = DataAtual.getFullYear()
-        let hora = String(DataAtual.getHours()).padStart(2, "0")
-        let minuto = String(DataAtual.getMinutes()).padStart(2, "0")
-        let DataFormatada = `${dia}/${mes}/${ano} - ${hora}:${minuto}`
-        return DataFormatada
+class CurrentDate {
+    getCurrentDate() {
+        let currentDate = new Date()
+        let day = String(currentDate.getDate()).padStart(2, "0")
+        let month = String(currentDate.getMonth() + 1).padStart(2, "0")
+        let year = currentDate.getFullYear()
+        let hour = String(currentDate.getHours()).padStart(2, "0")
+        let minute = String(currentDate.getMinutes()).padStart(2, "0")
+        let formattedDate = `${day}/${month}/${year} - ${hour}:${minute}`
+        return formattedDate
     }
 }
