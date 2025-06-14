@@ -1,5 +1,5 @@
-class GeneratePDFLayout{
-    setFileSize() {
+class PDFLayout{
+    #setFileSize() {
         const jsPDF = window.jspdf.jsPDF;    
         var doc = new jsPDF({
             orientation: 'portrait',
@@ -10,24 +10,25 @@ class GeneratePDFLayout{
     }
 
     constructor(){
-        this.doc = this.setFileSize();
+        this.doc = this.#setFileSize();
+        this.LogoPenske = "./Imgs/PenskeLogo.png"
     }
 
-    setInitialTextSize() {
+    #setInitialTextSize() {
         this.doc.setFontSize(40)
         this.doc.setFont("Helvetica","bold")
         this.doc.setLineWidth(2)
     }
 
-    setMargins_Top_Left_Right_Bottom() {
+    #setMargins_Top_Left_Right_Bottom() {
         this.doc.line(50, 100, 908, 100)
         this.doc.line(50, 100, 50, 1100)
         this.doc.line(908, 100, 908, 1100)
         this.doc.line(50, 1100, 908, 1100)
     }
 
-    setHeader() {
-        this.doc.addImage(LogoPenske,"PNG", 75, 78, 120, 120)
+    #setHeader() {
+        this.doc.addImage(this.LogoPenske,"PNG", 75, 78, 120, 120)
 
         this.doc.setDrawColor(32, 79, 146)
         this.doc.setLineWidth(20)
@@ -47,7 +48,7 @@ class GeneratePDFLayout{
         this.doc.text("Revisão: 01", 810, 140)
     }
 
-    setInfos(PDFReportObj) {
+    #setInfos(PDFReportObj) {
         this.doc.text(PDFReportObj.CurrentDate, 65, 225)
         this.doc.line(65, 229, 220, 229)
         this.doc.text("N° da NF:  " + PDFReportObj.NF, 700, 225)
@@ -73,7 +74,7 @@ class GeneratePDFLayout{
         this.doc.line(458, 400, 600, 400)
     }
 
-    createTable() {
+    #createTable() {
         this.doc.setDrawColor(32, 79, 146)
         this.doc.setLineWidth(24)
         this.doc.line(50, 460, 908, 460)
@@ -89,7 +90,7 @@ class GeneratePDFLayout{
         this.doc.line(750, 450, 750, 500)
     }
 
-    setTableInfos(PDFReportObj) {
+    #setTableInfos(PDFReportObj) {
         this.doc.setTextColor(255, 255,  255)
         this.doc.text("Agrupador", 75, 465)
         this.doc.setTextColor(0,0,0)
@@ -116,7 +117,7 @@ class GeneratePDFLayout{
         this.doc.text(PDFReportObj.Cidade, 755, 490)
     }
 
-    createImageField(ImagesList){
+    #createImageField(ImagesList){
         this.doc.setDrawColor(32, 79, 146)
         this.doc.setLineWidth(24)
         this.doc.line(50, 570, 908, 570)
@@ -134,7 +135,7 @@ class GeneratePDFLayout{
         this.doc.line(50, 754, 908, 754)
     }
 
-    createObsField() {
+    #createObsField() {
         this.doc.setTextColor(0,0,0)
         this.doc.text("OBS:", 60, 800)
         this.doc.line(100, 800, 854, 800)
@@ -145,7 +146,7 @@ class GeneratePDFLayout{
         this.doc.line(100, 1050, 854, 1050)
     }
 
-    setObsInfo(PDFReportObj){
+    #setObsInfo(PDFReportObj){
         var width = 105;
         var height = 798;
         var maxWidth = 750;
@@ -159,5 +160,18 @@ class GeneratePDFLayout{
             }
             this.doc.text(lines[i], width, height);
         }
+    }
+
+    GeneratePDFLayout(PDFReportObj, ImagesList) {
+        this.#setFileSize()
+        this.#setInitialTextSize()
+        this.#setMargins_Top_Left_Right_Bottom()
+        this.#setHeader()
+        this.#setInfos(PDFReportObj)
+        this.#createTable()
+        this.#setTableInfos(PDFReportObj)
+        this.#createImageField(ImagesList)
+        this.#createObsField()
+        this.#setObsInfo(PDFReportObj)
     }
 }

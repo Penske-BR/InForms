@@ -1,4 +1,3 @@
-const LogoPenske = "./Imgs/PenskeLogo.png"
 const downloadButton = document.getElementById("BotaoDeBaixar")
 const labelDeArmazenarImagens = document.getElementById("CentralizarImagensFlex")
 const BotaoDeExcluirImagem = document.getElementById("BotaoDeExcluirImagem")
@@ -143,24 +142,15 @@ function getPDFObjData() {
     }
 }
 
-function GetPDFFile() {
+function getPDFfile() {
     getPDFObjData()
-    const Layout = new GeneratePDFLayout()
+    const PDFmaker = new PDFLayout()
 
-    Layout.setFileSize()
-    Layout.setInitialTextSize()
-    Layout.setMargins_Top_Left_Right_Bottom()
-    Layout.setHeader()
-    Layout.setInfos(PDFReportObj)
-    Layout.createTable()
-    Layout.setTableInfos(PDFReportObj)
-    Layout.createImageField(ImagesList)
-    Layout.createObsField()
-    Layout.setObsInfo(PDFReportObj)
+    PDFmaker.GeneratePDFLayout(PDFReportObj, ImagesList)
 
-    Layout.doc.save(PDFReportObj.NF + ".pdf")
+    PDFmaker.doc.save(PDFReportObj.NF + ".pdf")
     
     EffectButton()
 }
 
-downloadButton.addEventListener("click", () => GetPDFFile())
+downloadButton.addEventListener("click", () => getPDFfile())
