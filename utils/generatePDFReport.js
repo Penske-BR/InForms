@@ -11,7 +11,23 @@ class PDFLayout{
 
     constructor(){
         this.doc = this.#setFileSize();
-        this.LogoPenske = "./Imgs/PenskeLogo.png"
+        this.logoPenske = "./Imgs/PenskeLogo.png"
+        this.imageCompressor = new ImageCompressor()
+        this.compressedImages = {}
+    }
+
+    async #CompressImages(ImagesList){
+        const compressedImagesList = []
+
+        for(let i = 0; i < ImagesList.length; i++){
+            compressedImagesList.push(await this.imageCompressor.getBase64(ImagesList[i]))
+        }
+
+        this.compressedImages = {
+            images: compressedImagesList
+        }
+        
+        return this.compressedImages
     }
 
     #setInitialTextSize() {
@@ -28,7 +44,7 @@ class PDFLayout{
     }
 
     #setHeader() {
-        this.doc.addImage(this.LogoPenske,"PNG", 75, 78, 120, 120)
+        this.doc.addImage(this.logoPenske,"PNG", 75, 78, 120, 120)
 
         this.doc.setDrawColor(32, 79, 146)
         this.doc.setLineWidth(20)
@@ -117,7 +133,9 @@ class PDFLayout{
         this.doc.text(PDFReportObj.Cidade, 755, 490)
     }
 
-    #createImageField(ImagesList){
+    #createImageField(){
+        console.log(this.compressedImages.images);
+        
         this.doc.setDrawColor(32, 79, 146)
         this.doc.setLineWidth(24)
         this.doc.line(50, 570, 908, 570)
@@ -127,11 +145,19 @@ class PDFLayout{
         this.doc.setLineWidth(2)
         this.doc.setDrawColor(0,0,0)
         
-        this.doc.addImage(ImagesList[0].imgURL, 60, 590, 260, 150)
+        const getFormat = (base64) => {
+            if (base64.startsWith('data:image/jpeg')) return 'JPEG'
+            if (base64.startsWith('data:image/jpg')) return 'JPEG'
+            if (base64.startsWith('data:image/png')) return 'PNG'
+            return 'JPEG'
+        }
+
+
+        this.doc.addImage(this.compressedImages.images[0], getFormat(this.compressedImages.images[0]), 60, 590, 260, 150, "img1", "FAST")
         this.doc.line(370, 580, 370, 755)
-        this.doc.addImage(ImagesList[1].imgURL, 420, 590, 260, 150)
+        this.doc.addImage(this.compressedImages.images[1], getFormat(this.compressedImages.images[1]), 420, 590, 260, 150, "img2", "FAST")
         this.doc.line(730, 580, 730, 755)
-        this.doc.addImage(ImagesList[2].imgURL, 775, 590, 120, 150)
+        this.doc.addImage(this.compressedImages.images[2], getFormat(this.compressedImages.images[2]), 775, 590, 120, 150, "img3", "FAST")
         this.doc.line(50, 754, 908, 754)
     }
 
@@ -162,8 +188,13 @@ class PDFLayout{
         }
     }
 
-    GeneratePDFLayout(PDFReportObj, ImagesList) {
-        this.#setFileSize()
+    teste(){
+        console.log(this.doc)
+    }
+
+    async GeneratePDFLayout(PDFReportObj, ImagesList) {
+        this.doc = this.#setFileSize()
+        await this.#CompressImages(ImagesList)
         this.#setInitialTextSize()
         this.#setMargins_Top_Left_Right_Bottom()
         this.#setHeader()
@@ -173,5 +204,6 @@ class PDFLayout{
         this.#createImageField(ImagesList)
         this.#createObsField()
         this.#setObsInfo(PDFReportObj)
+        this.doc.save(PDFReportObj.NF + ".pdf")
     }
 }
