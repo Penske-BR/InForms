@@ -66,6 +66,15 @@ class ImageManager {
         })
     }
 
+    insufficientQuantity(){
+        Swal.fire({
+            title: 'Ops!',
+            text: 'Você precisa anexar pelo menos 3 imagens para continuar!',
+            icon: 'error'
+        })
+        return false
+    }
+
     #addFilesFromInput() {
         for (let file of this.#inputElement.files) {
             this.#imageList.push(file)

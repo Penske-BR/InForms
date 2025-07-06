@@ -14,17 +14,27 @@ class PDFLayout{
         this.logoPenske = "./Imgs/PenskeLogo.png"
         this.imageCompressor = new ImageCompressor()
         this.compressedImages = {}
+        this.imageManager = new ImageManager()
     }
 
     async #CompressImages(ImagesList){
         const compressedImagesList = []
+        const imageFormats = []
+        const getFormat = (base64) => {
+            if (base64.startsWith('data:image/jpeg')) return 'JPEG'
+            if (base64.startsWith('data:image/jpg')) return 'JPEG'
+            if (base64.startsWith('data:image/png')) return 'PNG'
+            return 'JPEG'
+        }
 
         for(let i = 0; i < ImagesList.length; i++){
             compressedImagesList.push(await this.imageCompressor.getBase64(ImagesList[i]))
+            imageFormats.push(getFormat(compressedImagesList[i]))
         }
 
         this.compressedImages = {
-            images: compressedImagesList
+            images: compressedImagesList,
+            imageFormats: imageFormats
         }
         
         return this.compressedImages
@@ -134,31 +144,30 @@ class PDFLayout{
     }
 
     #createImageField(){
-        console.log(this.compressedImages.images);
-        
-        this.doc.setDrawColor(32, 79, 146)
-        this.doc.setLineWidth(24)
-        this.doc.line(50, 570, 908, 570)
-        this.doc.setTextColor(255,255,255)
-        this.doc.text("Fotos do produto avariado", 400, 575)
+        try {
+            this.doc.setDrawColor(32, 79, 146)
+            this.doc.setLineWidth(24)
+            this.doc.line(50, 570, 908, 570)
+            this.doc.setTextColor(255,255,255)
+            this.doc.text("Fotos do produto avariado", 400, 575)
 
-        this.doc.setLineWidth(2)
-        this.doc.setDrawColor(0,0,0)
-        
-        const getFormat = (base64) => {
-            if (base64.startsWith('data:image/jpeg')) return 'JPEG'
-            if (base64.startsWith('data:image/jpg')) return 'JPEG'
-            if (base64.startsWith('data:image/png')) return 'PNG'
-            return 'JPEG'
+            this.doc.setLineWidth(2)
+            this.doc.setDrawColor(0,0,0)
+            
+            this.doc.addImage(this.compressedImages.images[0], this.compressedImages.imageFormats[0], 60, 590, 260, 150, "img1", "FAST")
+            this.doc.line(370, 580, 370, 755)
+            this.doc.addImage(this.compressedImages.images[1], this.compressedImages.imageFormats[1], 420, 590, 260, 150, "img2", "FAST")
+            this.doc.line(730, 580, 730, 755)
+            this.doc.addImage(this.compressedImages.images[2], this.compressedImages.imageFormats[2], 775, 590, 120, 150, "img3", "FAST")
+            this.doc.line(50, 754, 908, 754)
+
+        } catch (error) {
+            if(this.compressedImages.images.length < 3){
+                this.imageManager.insufficientQuantity()
+                throw new Error("Insufficient images provided. Please provide at least 3 images.");
+            }
         }
-
-
-        this.doc.addImage(this.compressedImages.images[0], getFormat(this.compressedImages.images[0]), 60, 590, 260, 150, "img1", "FAST")
-        this.doc.line(370, 580, 370, 755)
-        this.doc.addImage(this.compressedImages.images[1], getFormat(this.compressedImages.images[1]), 420, 590, 260, 150, "img2", "FAST")
-        this.doc.line(730, 580, 730, 755)
-        this.doc.addImage(this.compressedImages.images[2], getFormat(this.compressedImages.images[2]), 775, 590, 120, 150, "img3", "FAST")
-        this.doc.line(50, 754, 908, 754)
+        
     }
 
     #createObsField() {
@@ -201,7 +210,7 @@ class PDFLayout{
         this.#setInfos(PDFReportObj)
         this.#createTable()
         this.#setTableInfos(PDFReportObj)
-        this.#createImageField(ImagesList)
+        this.#createImageField()
         this.#createObsField()
         this.#setObsInfo(PDFReportObj)
         this.doc.save(PDFReportObj.NF + ".pdf")
