@@ -1,3 +1,5 @@
+//TODO: Fazer com que o método GeneratePDFLayout respeite o OCP.
+
 class PDFLayout{
     #setFileSize() {
         const jsPDF = window.jspdf.jsPDF;    
@@ -11,7 +13,7 @@ class PDFLayout{
 
     constructor(){
         this.doc = this.#setFileSize();
-        this.logoPenske = "./Imgs/PenskeLogo.png"
+        this.logoPenske = "../Imgs/PenskeLogo.png"
         this.imageCompressor = new ImageCompressor()
         this.compressedImages = {}
         this.imageManager = new ImageManager()

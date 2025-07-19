@@ -1,0 +1,115 @@
+.botaodeAnexarImagem{
+    position: sticky;
+    top: 0;
+    right: 100%;
+    width: 20vh;
+    height: 6vh;
+    margin: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    border: none;
+    border-radius: 2vh;
+    cursor: pointer;
+}
+.InputDeAnexarArquivo{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#CheckBoxCaixaDePapelao{
+    display: flex;
+    flex-direction: column;
+}
+
+#agrupadorCampoObs{
+    width: 100%;
+}
+#ObsCampoDeTexto{
+    width: 80%;
+}
+#ArmazenarImagens{
+    position: absolute;
+    width: 50%;
+    height: 30vh;
+    z-index: 5;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+#CampoDeObs{
+    width: 80%;
+    height: 30vh;
+    background-color: white;
+    border-radius: 3vh;
+    padding: 2%;
+}
+#CampoDeObs:hover{
+    cursor: auto;
+}
+#CampoDeObs::before {
+    content: attr(data-placeholder);
+    color: #aaa;
+    pointer-events: none;
+    padding: 2%;
+}
+
+#CampoDeObs:empty::before {
+    display: block;
+}
+
+#CampoDeObs:not(:empty)::before {
+    display: none;
+}
+
+.CentralizarImagensFlex{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.BotaoDeExcluirImagem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5vh;
+    height: 5vh;
+    position: absolute;
+    top: 0%;
+    right: 2%;
+    margin-top: 2%;
+    background-color: red;
+    border: none;
+    border-radius: 5vh;
+    color: white;
+    font-weight: 500;
+}
+.BotaoDeExcluirImagem > img{
+    position: absolute;
+    width: 60%;
+    height: 60%;
+}
+.imgContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.CheckBoxDeDeletar{
+    width: 5vh;
+    height: 5vh;
+    border-radius: 5vh;
+    background-color: red;
+    margin-left: 6%;
+    margin-bottom: -2%;
+}

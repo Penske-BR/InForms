@@ -1,222 +1,103 @@
-*{
-    padding: 0px;
-    margin: 0px;
-    font-family:"Open Sans", sans-serif;
-    font-weight: 100;
-}
-body{
-    background: linear-gradient(to right, #0000002c,#E1E5E8, #0000002c );
-}
-#Titulo{
+.Titulo{
     width: 100%;
     text-align: center;
-    margin-top: 5%;
+    margin-top: 4vh;
     font-weight: 400;
     font-size: 3vh;
+    margin-bottom: 5vh;
 }
-form{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-.Pergunta{
-    position: relative;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    font-size: 3vh;
-    top: 1%;
-    margin-top: 2%;
-    margin-bottom: 2%;
-}
-.CaixaDePergunta{
+.modeloDeRelatorio{
     position: relative;
     background-color: #E1E5E8;
     border-radius: 2vh;
     margin-top: 2%;
-    box-shadow: 10px 10px 10px 10px  rgba(0, 0, 0, 0.03);
+    box-shadow: 10px 10px 10px 10px  rgba(0, 0, 0, 0.118);
     font-size: 2.5vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    overflow: hidden;
+    max-width: 450px;
+    margin: 2vh;
 }
-.centralizarAlternativasFlex{
+
+.modeloDeRelatorio:hover{
+    animation: animacaoDoModeloDeRelatorio 0.3s ease-in-out forwards;
+}
+@keyframes animacaoDoModeloDeRelatorio{
+    0%{
+        transform: scale(1);
+        box-shadow: 10px 10px 10px 10px  rgba(0, 0, 0, 0.118);
+    }
+    50%{
+        box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.285);
+    }
+    100%{
+        transform: scale(1.05);
+        box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.485);
+    }
+    
+}
+.centralizar{
     position: relative;
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-bottom: 5%;
 }
-.AgrupadorDasOpcoes{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    margin: 5%;
-}
-.checkboxs{
-    width: 3vh;
-    height: 3vh;
-    margin: 2%;
-    z-index: 5;
-}
-.TextCheckbox{
-    width: 100%;
-    height: 4vh;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-    align-items: center;
-    margin-left: 5%;
-    z-index: 5;
-    border: none;
-    border-radius: 3vh;
-    font-size: 2vh;
-    padding-left: 5%;
-    z-index: 3;
-}
-#InputDeAnexarImagem{
-    border-radius: 2vh;
-    border: none;
-}
-.ImagensAnexadas{
-    width: 80%;
-    height: 80%;
-    margin: 3%;
-}
-#InputDeAnexarImagem{
+.centralizarTexto{
     position: relative;
-    align-self: flex-start;
-    width: 25vh;
-}
-.checkboxs:hover{
-    cursor: pointer;
-}
-.RespostasDoCheck{
-    font-size: 2.5vh;
-    margin-right: 5%;
-}
-#CheckBoxCaixaDePapelao{
-    display: flex;
-    flex-direction: column;
-}
-#agrupadorCampoObs{
     width: 100%;
-}
-#ObsCampoDeTexto{
-    width: 80%;
-}
-#ArmazenarImagens{
-    position: absolute;
-    width: 50%;
-    height: 30vh;
-    z-index: 5;
-}
-#centralizarButtonFlex{
-    width: 100%;
-    margin-top: 5%;
+    height: 100%;
     display: flex;
+    align-items: center;
     justify-content: center;
+    flex-direction: column;
+    gap: 10px;
 }
-#BotaoDeBaixar{
-    border-radius: 3vh;
-    width: 18vh;
-    height: 6vh;
-    background-color: rgba(255, 255, 255, 0.366);
-    box-shadow: 10px 10px 10px 10px  rgba(0, 0, 0, 0.03);
-    border: none;
-    margin-bottom: 5%;
-    font-size: 2vh;
+h2, p, a{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    display: block;
+    box-sizing: border-box;
 }
-button:hover{
-    cursor: pointer;
+.NomeDoRelatorio{
+    margin-bottom: 3vh;
+    font-size: 2.7vh;
 }
-
-#CampoDeObs{
+p{
+    font-size: 1.9vh;
     width: 80%;
-    height: 30vh;
-    background-color: white;
-    border-radius: 3vh;
-    padding: 2%;
-}
-#CampoDeObs:hover{
-    cursor: auto;
-}
-#CampoDeObs::before {
-    content: attr(data-placeholder);
-    color: #aaa;
-    pointer-events: none;
-    padding: 2%;
+    margin-bottom: 2vh;
 }
 
-#CampoDeObs:empty::before {
+.botaoDoModeloDeRelatorio{
+    width: 6.5vh;
+    height: 6.5vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    border-radius: 2vh;
     display: block;
 }
 
-#CampoDeObs:not(:empty)::before {
-    display: none;
+.centralizarImg{
+    position: relative;
+    width: 60%;
+    height: 35vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
-
-#CentralizarImagensFlex{
+img{
+    position: relative;
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-#BotaoDeExcluirImagem{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 5vh;
-    height: 5vh;
-    position: absolute;
-    top: 0%;
-    right: 2%;
-    margin-top: 2%;
-    background-color: red;
-    border: none;
-    border-radius: 5vh;
-    color: white;
-    font-weight: 500;
-}
-#BotaoDeExcluirImagem > img{
-    position: absolute;
-    width: 60%;
-    height: 60%;
-}
-.imgContainer{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-}
-.CheckBoxDeDeletar{
-    width: 5vh;
-    height: 5vh;
-    border-radius: 5vh;
-    background-color: red;
-    margin-left: 6%;
-    margin-bottom: -2%;
-}
-
-@media (max-width: 1200px) {
-    .CaixaDePergunta{
-        width: 80%;
-    }
-}
-@media (min-width: 1201px){
-    .CaixaDePergunta{
-        width: 50%;
-    }
+    object-fit: cover;
 }

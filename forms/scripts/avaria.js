@@ -1,7 +1,7 @@
 const downloadButton = document.getElementById("BotaoDeBaixar")
 const labelDeArmazenarImagens = document.getElementById("CentralizarImagensFlex")
 const BotaoDeExcluirImagem = document.getElementById("BotaoDeExcluirImagem")
-const InputDeAnexarImagem = document.getElementById("InputDeAnexarImagem")
+const InputDeAnexarImagem = document.getElementById("InputDeAnexarArquivo")
 const manager = new ImageManager(InputDeAnexarImagem, labelDeArmazenarImagens)
 
 function EffectButton(){

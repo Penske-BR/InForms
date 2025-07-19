@@ -61,7 +61,7 @@ class ImageManager {
     #showLimitReachedAlert() {
         Swal.fire({
             title: 'Oops!',
-            text: `You can only add up to ${this.#maxImages} images!`,
+            text: `Você só pode adicionar até ${this.#maxImages} imagens!`,
             icon: 'error'
         })
     }

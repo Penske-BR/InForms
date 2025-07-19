@@ -1,0 +1,12 @@
+[package]
+name = "imageCompressor"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+base64 = "0.22.1"
+image = "0.25.6"
+wasm-bindgen = "0.2.100"
+
+[lib]
+crate-type = ["cdylib"]

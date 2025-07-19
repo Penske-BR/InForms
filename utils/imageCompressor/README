@@ -1,0 +1,4 @@
+A pasta atual(imageCompressor) futuramente, conterá um script Rust para substituir o modelo de compressão de imagens usado atualmente.
+
+Por que?
+O modelo atual usa JS + browser-image-compression. Esse modelo é funcional, porém lento, demorando cerca de 5-10s dependendo do tamanho das imagens.

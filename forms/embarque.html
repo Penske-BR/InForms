@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de embarque</title>
+    <link rel="stylesheet" href="../globalStyles.css">
+    <link rel="stylesheet" href="css/form.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.15.10/dist/sweetalert2.min.css">
+
+</head>
+<body>
+
+    <button class="botaoDeMudarForm"><a href="../index.html">Voltar</a></button>
+
+    <h1 class="Titulo">Relatório</br> 
+        de </br>
+        Embarque</h1>
+    <form>
+
+        <label for="Doca" id="Doca" class="CaixaDePergunta">
+            <span class="Pergunta">Doca
+            </span>
+
+            <div class="centralizarAlternativasFlex">
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="TextCheckbox" id="Doca" type="text" name="NF" placeholder="Doca..." maxlength="15"></div>
+
+            </div>
+        </label>
+
+        <label for="Placa" id="Placa" class="CaixaDePergunta">
+            <span class="Pergunta">Placa do veículo
+            </span>
+
+            <div class="centralizarAlternativasFlex">
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="TextCheckbox" id="Placa" type="text" name="NF" placeholder="Placa..." maxlength="15"></div>
+
+            </div>
+        </label>
+
+        <label for="ChaveDoVeiculo" id="ChaveDoVeiculo" class="CaixaDePergunta">
+            <span class="Pergunta">Foi recolhido a chave do veículo?</span>
+
+            <div class="centralizarAlternativasFlex">
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="SimChaveRecolhida" type="radio" name="Calco" value="C">Conforme
+                </div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoChaveRecolhida" type="radio" name="Calco" value="N/C">Não Conforme
+                </div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoChaveRecolhida" type="radio" name="Calco" value="N/A">Não Aplicado
+                </div>
+            </div>
+        </label>
+
+        <label for="CalcoDeSeguranca" id="CalcoDeSeguranca" class="CaixaDePergunta">
+            <span class="Pergunta">O veículo está utilizando calço de segurança?</span>
+
+            <div class="centralizarAlternativasFlex">
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="SimCalcoDeSeguranca" type="radio" name="Chave" value="C">Conforme</div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoCalcoDeSeguranca" type="radio" name="Chave" value="N/C">Não Conforme
+                </div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoCalcoDeSeguranca" type="radio" name="Chave" value="N/A">Não Aplicado
+                </div>
+            </div>
+        </label>
+
+        <label for="CalcoDeSeguranca" id="CalcoDeSeguranca" class="CaixaDePergunta">
+            <span class="Pergunta">A doca está limpa e organizada?</span>
+
+            <div class="centralizarAlternativasFlex">
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="SimCalcoDeSeguranca" type="radio" name="Chave" value="C">Conforme</div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoCalcoDeSeguranca" type="radio" name="Chave" value="N/C">Não Conforme
+                </div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoCalcoDeSeguranca" type="radio" name="Chave" value="N/A">Não Aplicado
+                </div>
+            </div>
+        </label>
+
+        <label for="CalcoDeSeguranca" id="CalcoDeSeguranca" class="CaixaDePergunta">
+            <span class="Pergunta">A plataforma niveladora está posicionada corretamente?</span>
+
+            <div class="centralizarAlternativasFlex">
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="SimCalcoDeSeguranca" type="radio" name="Chave" value="C">Conforme</div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoCalcoDeSeguranca" type="radio" name="Chave" value="N/C">Não Conforme
+                </div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoCalcoDeSeguranca" type="radio" name="Chave" value="N/A">Não Aplicado
+                </div>
+            </div>
+        </label>
+
+        <label for="CalcoDeSeguranca" id="CalcoDeSeguranca" class="CaixaDePergunta">
+            <span class="Pergunta">Está sendo utilizada a trava da porta da doca?</span>
+
+            <div class="centralizarAlternativasFlex">
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="SimCalcoDeSeguranca" type="radio" name="Chave" value="C">Conforme</div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoCalcoDeSeguranca" type="radio" name="Chave" value="N/C">Não Conforme
+                </div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoCalcoDeSeguranca" type="radio" name="Chave" value="N/A">Não Aplicado
+                </div>
+            </div>
+        </label>
+
+        <label for="CalcoDeSeguranca" id="CalcoDeSeguranca" class="CaixaDePergunta">
+            <span class="Pergunta">O guarda corpo fixo na rampa niveladora está em boas condições?</span>
+
+            <div class="centralizarAlternativasFlex">
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="SimCalcoDeSeguranca" type="radio" name="Chave" value="C">Conforme</div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoCalcoDeSeguranca" type="radio" name="Chave" value="N/C">Não Conforme
+                </div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoCalcoDeSeguranca" type="radio" name="Chave" value="N/A">Não Aplicado
+                </div>
+            </div>
+        </label>
+
+        <label for="CalcoDeSeguranca" id="CalcoDeSeguranca" class="CaixaDePergunta">
+            <span class="Pergunta">O guarda corpo nas laterais da doca está em boas condições?</span>
+
+            <div class="centralizarAlternativasFlex">
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="SimCalcoDeSeguranca" type="radio" name="Chave" value="C">Conforme</div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoCalcoDeSeguranca" type="radio" name="Chave" value="N/C">Não Conforme
+                </div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoCalcoDeSeguranca" type="radio" name="Chave" value="N/A">Não Aplicado
+                </div>
+            </div>
+        </label>
+
+        <label for="CalcoDeSeguranca" id="CalcoDeSeguranca" class="CaixaDePergunta">
+            <span class="Pergunta">Veículo em bom estado(porta, piso, cantos vivo, etc)?</span>
+
+            <div class="centralizarAlternativasFlex">
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="SimCalcoDeSeguranca" type="radio" name="Chave" value="C">Conforme</div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoCalcoDeSeguranca" type="radio" name="Chave" value="N/C">Não Conforme
+                </div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoCalcoDeSeguranca" type="radio" name="Chave" value="N/A">Não Aplicado
+                </div>
+            </div>
+        </label>
+
+        <label for="CalcoDeSeguranca" id="CalcoDeSeguranca" class="CaixaDePergunta">
+            <span class="Pergunta">A iluminação(dock light) está funcionando?</span>
+
+            <div class="centralizarAlternativasFlex">
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="SimCalcoDeSeguranca" type="radio" name="Chave" value="C">Conforme</div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoCalcoDeSeguranca" type="radio" name="Chave" value="N/C">Não Conforme
+                </div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoCalcoDeSeguranca" type="radio" name="Chave" value="N/A">Não Aplicado
+                </div>
+            </div>
+        </label>
+
+        <label for="CalcoDeSeguranca" id="CalcoDeSeguranca" class="CaixaDePergunta">
+            <span class="Pergunta">O cavalete da plataforma(descarregamento veículo saider) está em boas condições?</span>
+
+            <div class="centralizarAlternativasFlex">
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="SimCalcoDeSeguranca" type="radio" name="Chave" value="C">Conforme</div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoCalcoDeSeguranca" type="radio" name="Chave" value="N/C">Não Conforme
+                </div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoCalcoDeSeguranca" type="radio" name="Chave" value="N/A">Não Aplicado
+                </div>
+            </div>
+        </label>
+
+        <label for="CalcoDeSeguranca" id="CalcoDeSeguranca" class="CaixaDePergunta">
+            <span class="Pergunta">O veículo saider possui as réguas de proteção lateral?</span>
+
+            <div class="centralizarAlternativasFlex">
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="SimCalcoDeSeguranca" type="radio" name="Chave" value="C">Conforme</div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoCalcoDeSeguranca" type="radio" name="Chave" value="N/C">Não Conforme
+                </div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoCalcoDeSeguranca" type="radio" name="Chave" value="N/A">Não Aplicado
+                </div>
+            </div>
+        </label>
+
+        <label for="CalcoDeSeguranca" id="CalcoDeSeguranca" class="CaixaDePergunta">
+            <span class="Pergunta">O veículo com 01(um) eixo está com o cavalo atrelado??</span>
+
+            <div class="centralizarAlternativasFlex">
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="SimCalcoDeSeguranca" type="radio" name="Chave" value="C">Conforme</div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoCalcoDeSeguranca" type="radio" name="Chave" value="N/C">Não Conforme
+                </div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs" id="NaoCalcoDeSeguranca" type="radio" name="Chave" value="N/A">Não Aplicado
+                </div>
+            </div>
+        </label>
+    </form>
+
+    <div class="centralizarButtonFlex"><button class="BotaoDeBaixar">Baixar relatório</button></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.15.10/dist/sweetalert2.all.min.js"></script>
+
+    <script>
+        const botaoDeBaixar = document.querySelector('.BotaoDeBaixar');
+        botaoDeBaixar.addEventListener('click', () => {
+            swal.fire({
+                title: 'Modelo indisponível',
+                text: 'O modelo de relatório atual está em desenvolvimento. Por favor tente mais tarde ou contate o desenvolvedor.',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            })
+        })
+    </script>
+</body>
+</html>

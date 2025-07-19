@@ -1,203 +1,55 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerador de Avarias</title>
+    <link rel="stylesheet" href="globalStyles.css">
     <link rel="stylesheet" href="index.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.15.10/dist/sweetalert2.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 
 </head>
 <body>
+    <h1 class="Titulo">O que você deseja registrar?</h1>
 
-    <h1 id="Titulo">Relatório</br> 
-        não conformidades</h1>
-    <form>
-
-        <label for="QuestaoNumero" id="QuestaoNumero" class="CaixaDePergunta">
-            <span class="Pergunta">NF
-            </span>
-
-            <div class="centralizarAlternativasFlex">
-
-                <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="NFCaixaDeTexto" type="text" name="NF" placeholder="NF..." maxlength="15"></div>
-
-            </div>
-        </label>
-
-        <label for="QuestaoAgrupador" id="QuestaoAgrupador" class="CaixaDePergunta">
-            <span class="Pergunta">Agrupador
-            </span>
-
-            <div class="centralizarAlternativasFlex">
-
-                <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="AgrupadorCaixaDeTexto" type="text" name="Agrupador" placeholder="Agrupador..." maxlength="10"></div>
-
-            </div>
-        </label>
-
-        <label for="QuestaoCidadeEstado" id="QuestaoCidadeEstado" class="CaixaDePergunta">
-            <span class="Pergunta">Estado,Cidade e Concessionária.
-            </span>
-
-            <div class="centralizarAlternativasFlex">
-
-                <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="EstadoCampoDeTexto" type="text" name="Estado" placeholder="Estado..." maxlength="10"></div>
-
-                <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="CidadeCampoDeTexto" type="text" name="Cidade" placeholder="Cidade..." maxlength="16"></div>
-
-                <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="ConcessionariaCampoDeTexto" type="text" name="Concessionária" placeholder="Concessionária..." maxlength="24"></div>
-
-            </div>
-        </label>
-
-        <label for="QuestaoPartNumber" id="QuestaoPartNumber" class="CaixaDePergunta">
-            <span class="Pergunta">Part number</span>
-
-            <div class="centralizarAlternativasFlex">
-
-                <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="PartNumberCampoDeTexto" type="text" name="Part Number" placeholder="Part Number..." maxlength="20"></div>
-
-            </div>
-        </label>
-
-        <label for="QuestaoMaterial" id="QuestaoMaterial" class="CaixaDePergunta">
-            <span class="Pergunta">Material da embalagem</span>
-
-            <div class="centralizarAlternativasFlex">
-                <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="EmbalagemCampoDeTexto" type="text" name="Material da embalagem" placeholder="Material..." maxlength="10">
-                </div>
-            </div>
-        </label>
-
-        <label for="QuestaoProblema" id="QuestaoProblema" class="CaixaDePergunta">
-            <span class="Pergunta">Descreva o Problema</span>
-
-            <div class="centralizarAlternativasFlex">
-
-                <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="ProblemaCampoDeTexto" type="text" name="Descreva o Problema" placeholder="Problema..." maxlength="17"></div>
-
-            </div>
-        </label>
-
-        <label for="QuestaoAcao" id="QuestaoAcao" class="CaixaDePergunta" data-checkBox="Ação tomada">
-            <span class="Pergunta">Ação tomada</span>
-
-            <div class="centralizarAlternativasFlex">
-
-                <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs AcaoTomada" id="TrocarEmbalagem" type="radio" name="Ação Tomada" value="Troca da embalagem">Troca da embalagem</div>
-
-                <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs AcaoTomada" id="RepararEmbalagem" type="radio" name="Ação Tomada" value="Reparo da embalagem">
-                    Reparo da embalagem
-                </div>
-
-                <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs AcaoTomada" id="SeguirDanificada" type="radio" name="Ação Tomada" value="Seguiu danificada">Seguiu danificada</div>
-
-            </div>
-        </label>
-
-
-        <label for="PecaEmbalagemAvariada" id="PecaEmbalagemAvariada" class="CaixaDePergunta">
-            <span class="Pergunta">Peça avariada</span>
-
-            <div class="centralizarAlternativasFlex">
-                <div class="AgrupadorDasOpcoes PecaAvariada">
-                    <input class="checkboxs Peca" id="SimVolumeAvariado" type="radio" name="Peça avariada" value="Sim">Sim</div>
-
-                <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs Peca" id="NaoVolumeAvariado" type="radio" name="Peça avariada" value="Não">Não
-                </div>
-            </div>
-        </label>
-
-        <label for="QuestaoTransportadora" id="QuestaoTransportadora" class="CaixaDePergunta">
-            <span class="Pergunta">Transportadora</span>
-
-            <div class="centralizarAlternativasFlex">
-
-                <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="TransportadoraCampoDeTexto" type="text" name="Transportadora" placeholder="Transportadora..." maxlength="11"></div>
-            </div>
-        </label>
-
-        <label for="QuestaoPlaca" id="QuestaoPlaca" class="CaixaDePergunta">
-            <span class="Pergunta">Placa</span>
-
-            <div class="centralizarAlternativasFlex">
-
-                <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="PlacaCampoDeTexto" type="text" name="Placa" placeholder="Placa..." maxlength="20"></div>
-            </div>
-        </label>
-
-        <label for="QuestaoDestino" id="QuestaoDestino" class="CaixaDePergunta">
-            <span class="Pergunta">Destino</span>
-
-            <div class="centralizarAlternativasFlex">
-
-                <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="DestinoCampoDeTexto" type="text" name="Destino" placeholder="Destino..." maxlength="16"></div>
-            </div>
-        </label>
-
-        <label for="QuestaoHorario" id="QuestaoHorario" class="CaixaDePergunta">
-            <span class="Pergunta">Horário de saída</span>
-
-            <div class="centralizarAlternativasFlex">
-
-                <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="HorarioCampoDeTexto" type="text" name="Horário de saída" placeholder="Horário..." maxlength="5"></div>
-            </div>
-        </label>
-
-        <label for="QuestaoObs" id="QuestaoObs" class="CaixaDePergunta">
-            <span class="Pergunta">Observação</span>
-
-            <div class="centralizarAlternativasFlex">
-
-                <div class="AgrupadorDasOpcoes" id="agrupadorCampoObs">
-                    <textarea id="CampoDeObs" placeholder="Obs..." maxlength="579"></textarea>
-                </div>
-            </div>
-        </label>
-
-        <label for="QuestaoArquivo" id="QuestaoArquivo" class="CaixaDePergunta">
-            <span class="Pergunta">Anexar foto</span>
-                    <button id="BotaoDeExcluirImagem"><img src="Imgs/trash-can.png" alt=""></button>
-                    <input class="TextCheckbox" id="InputDeAnexarImagem" type="file" accept="image/*" name="InputDeAnexarFoto" multiple onchange="ExibirImagensNaTela(event)">
-                    <div id="CentralizarImagensFlex">
+        <form>
+            <label for="Avaria" class="modeloDeRelatorio">
+                <div class="centralizar">
+                     <div class="centralizarImg">
+                        <img src="Imgs/texturas/avaria.png" alt="">
                     </div>
-        </label>
+                    
+                    <div class="centralizarTexto">
+                        <h2 class="NomeDoRelatorio">Relatório de <br>Não conformidade</br></h2>
+                        <p>Usado para registrar não conformidades.</p>
 
-    </form>
+                        <a href="forms/avaria.html" class="botaoDoModeloDeRelatorio">
+                            <img src="Imgs/seta.png" alt="">
+                        </a>
+                    </div>
+                </div>
+            </label>
 
-    <div id="centralizarButtonFlex"><button id="BotaoDeBaixar">Baixar relatório</button></div>
+            <label for="Embarque" class="modeloDeRelatorio">
+                <div class="centralizar">
+                     <div class="centralizarImg">
+                        <img src="Imgs/texturas/embarque.png" alt="">
+                    </div>
+                    
+                    <div class="centralizarTexto">
+                        <h2 class="NomeDoRelatorio">Relatório de <br>Embarque</br></h2>
+                        <p>Usado para registrar informações de embarque.</p>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.15.10/dist/sweetalert2.all.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/browser-image-compression/2.0.2/browser-image-compression.min.js" integrity="sha512-hig3vKKjtrjYwvCtgib8yPJcYrFXxmUbcAY4c9ZlZPlWzlmbOMGe9vmozjBo3LCSU3EW+9BUrmHBRNMkLSDVTw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script src="utils/utils.js"></script>
-    <script src="utils/ImageManager.js"></script>
-    <script src="utils/CompressImg.js"></script>
-    <script src="utils/GeneratePDFReport.js"></script>
-    
-    <script src="index.js">
-    </script>
+                        <a href="forms/embarque.html" class="botaoDoModeloDeRelatorio">
+                            <img src="Imgs/seta.png" alt="">
+                        </a>
+                    </div>
+                </div>
+            </label>
+        </form>
 </body>
 </html>

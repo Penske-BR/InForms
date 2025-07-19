@@ -2,7 +2,15 @@ export default class FormFiller {
     #visitHomePage(){
         cy.visit('http://127.0.0.1:5500/')
     }
-
+    #checkFormPage(formModel){
+        if(formModel === 'avaria'){
+            cy.get('#formularioDeAvarias').click()
+        }else if(formModel === 'embarque'){
+            cy.get('#formularioDeEmbarque').click()
+        }else{
+            throw new Error("Modelo de formulário inválido. Use 'avaria' ou 'embarque'.");
+        }
+    }
     #fillNFidentifiersFields(){
         cy.get('#NFCaixaDeTexto').type('640981')
         cy.get('#AgrupadorCaixaDeTexto').type('566981')
@@ -46,8 +54,9 @@ export default class FormFiller {
         cy.get('#BotaoDeBaixar').click()
     }
 
-    fillForm(){
+    fillForm(formModel){
         this.#visitHomePage()
+        this.#checkFormPage(formModel)
         this.#fillNFidentifiersFields()
         this.#fillLocationFields()
         this.#fillProductFields()
