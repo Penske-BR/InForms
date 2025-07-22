@@ -27,12 +27,6 @@
     flex-direction: column;
 }
 
-#agrupadorCampoObs{
-    width: 100%;
-}
-#ObsCampoDeTexto{
-    width: 80%;
-}
 #ArmazenarImagens{
     position: absolute;
     width: 50%;
@@ -42,31 +36,6 @@
 
 button:hover{
     cursor: pointer;
-}
-
-#CampoDeObs{
-    width: 80%;
-    height: 30vh;
-    background-color: white;
-    border-radius: 3vh;
-    padding: 2%;
-}
-#CampoDeObs:hover{
-    cursor: auto;
-}
-#CampoDeObs::before {
-    content: attr(data-placeholder);
-    color: #aaa;
-    pointer-events: none;
-    padding: 2%;
-}
-
-#CampoDeObs:empty::before {
-    display: block;
-}
-
-#CampoDeObs:not(:empty)::before {
-    display: none;
 }
 
 .CentralizarImagensFlex{

@@ -4,9 +4,9 @@ export default class FormFiller {
     }
     #checkFormPage(formModel){
         if(formModel === 'avaria'){
-            cy.get('#formularioDeAvarias').click()
+            cy.get('#relatorioDeAvaria').click()
         }else if(formModel === 'embarque'){
-            cy.get('#formularioDeEmbarque').click()
+            cy.get('#relatorioDeEmbarque').click()
         }else{
             throw new Error("Modelo de formulário inválido. Use 'avaria' ou 'embarque'.");
         }
