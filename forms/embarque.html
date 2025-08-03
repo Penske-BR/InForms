@@ -6,6 +6,7 @@
     <title>Check List</title>
     <link rel="stylesheet" href="../globalStyles.css">
     <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/embarque.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +29,7 @@
             <div class="centralizarAlternativasFlex">
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="Doca" type="text" name="NF" placeholder="Doca..." maxlength="15"></div>
+                    <input class="TextCheckbox" id="DocaCaixaDeTexto" type="text" name="Doca" placeholder="Doca..." maxlength="15"></div>
 
             </div>
         </label>
@@ -40,25 +41,36 @@
             <div class="centralizarAlternativasFlex">
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="TextCheckbox" id="Placa" type="text" name="NF" placeholder="Placa..." maxlength="15"></div>
+                    <input class="TextCheckbox" id="PlacaCaixaDeTexto" type="text" name="Placa" placeholder="Placa..." maxlength="15"></div>
 
             </div>
         </label>
 
-        <label for="ChaveDoVeiculo" id="ChaveDoVeiculo" class="CaixaDePergunta">
+        <label for="Responsável" id="Responsavel" class="CaixaDePergunta">
+            <span class="Pergunta">Responsável pela inspeção
+            </span>
+
+            <div class="centralizarAlternativasFlex">
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="TextCheckbox" id="ResponsavelCaixaDeTexto" type="text" name="Responsavel" placeholder="Responsável..."></div>
+            </div>
+        </label>
+
+        <label for="ChaveDoVeiculo" id="QuestaoChaveDoVeiculo" class="CaixaDePergunta">
             <span class="Pergunta">Foi recolhido a chave do veículo?</span>
 
             <div class="centralizarAlternativasFlex">
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="SimChaveRecolhida" type="radio" name="Chave" value="C">Conforme
+                    <input class="checkboxs ChaveDoVeiculo" id="SimChaveRecolhida" type="radio" name="Chave do veículo" value="C">Conforme
                 </div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="NaoChaveRecolhida" type="radio" name="Chave" value="N/C">Não Conforme
+                    <input class="checkboxs ChaveDoVeiculo" id="NaoChaveRecolhida" type="radio" name="Chave do veículo" value="N/C">Não Conforme
                 </div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="NaoAplicadoChaveRecolhida" type="radio" name="Chave" value="N/A">Não Aplicado
+                    <input class="checkboxs ChaveDoVeiculo" id="NaoAplicadoChaveRecolhida" type="radio" name="Chave do veículo" value="N/A">Não Aplicado
                 </div>
             </div>
         </label>
@@ -68,31 +80,32 @@
 
             <div class="centralizarAlternativasFlex">
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="SimCalcoDeSeguranca" type="radio" name="Calco" value="C">Conforme</div>
-
-                <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="NaoCalcoDeSeguranca" type="radio" name="Calco" value="N/C">Não Conforme
+                    <input class="checkboxs CalcoDeSeguranca" id="SimCalcoDeSeguranca" type="radio" name="Calço de segurança" value="C">Conforme</input>
                 </div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="NaoAplicadoCalcoDeSeguranca" type="radio" name="Calco" value="N/A">Não Aplicado
+                    <input class="checkboxs CalcoDeSeguranca" id="NaoCalcoDeSeguranca" type="radio" name="Calço de segurança" value="N/C">Não Conforme</input>
+                </div>
+
+                <div class="AgrupadorDasOpcoes">
+                    <input class="checkboxs CalcoDeSeguranca" id="NaoAplicadoCalcoDeSeguranca" type="radio" name="Calço de segurança" value="N/A">Não Aplicado</input>
                 </div>
             </div>
         </label>
 
-        <label for="Doca" id="Doca" class="CaixaDePergunta">
+        <label for="Doca" id="DocaLimpa" class="CaixaDePergunta">
             <span class="Pergunta">A doca está limpa e organizada?</span>
 
             <div class="centralizarAlternativasFlex">
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="SimDocaLimpa" type="radio" name="Doca" value="C">Conforme</div>
+                    <input class="checkboxs DocaLimpa" id="SimDocaLimpa" type="radio" name="Doca limpa e organizada" value="C">Conforme</div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="NaoDocaLimpa" type="radio" name="Doca" value="N/C">Não Conforme
+                    <input class="checkboxs DocaLimpa" id="NaoDocaLimpa" type="radio" name="Doca limpa e organizada" value="N/C">Não Conforme
                 </div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="NaoAplicadoDocaLimpa" type="radio" name="Doca" value="N/A">Não Aplicado
+                    <input class="checkboxs DocaLimpa" id="NaoAplicadoDocaLimpa" type="radio" name="Doca limpa e organizada" value="N/A">Não Aplicado
                 </div>
             </div>
         </label>
@@ -102,31 +115,31 @@
 
             <div class="centralizarAlternativasFlex">
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="SimPlataforma" type="radio" name="plataforma" value="C">Conforme</div>
+                    <input class="checkboxs Plataforma" id="SimPlataforma" type="radio" name="Plataforma niveladora" value="C">Conforme</div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="NaoPlataforma" type="radio" name="plataforma" value="N/C">Não Conforme
+                    <input class="checkboxs Plataforma" id="NaoPlataforma" type="radio" name="Plataforma niveladora" value="N/C">Não Conforme
                 </div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="NaoAplicadoPlataforma" type="radio" name="plataforma" value="N/A">Não Aplicado
+                    <input class="checkboxs Plataforma" id="NaoAplicadoPlataforma" type="radio" name="Plataforma niveladora" value="N/A">Não Aplicado
                 </div>
             </div>
         </label>
 
-        <label for="trava" id="trava" class="CaixaDePergunta">
+        <label for="trava" id="Trava" class="CaixaDePergunta">
             <span class="Pergunta">Está sendo utilizada a trava da porta da doca?</span>
 
             <div class="centralizarAlternativasFlex">
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="SimTrava" type="radio" name="Trava" value="C">Conforme</div>
+                    <input class="checkboxs Trava" id="SimTrava" type="radio" name="Trava da porta da doca" value="C">Conforme</div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="NaoTrava" type="radio" name="Trava" value="N/C">Não Conforme
+                    <input class="checkboxs Trava" id="NaoTrava" type="radio" name="Trava da porta da doca" value="N/C">Não Conforme
                 </div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="NaoAplicadoTrava" type="radio" name="Trava" value="N/A">Não Aplicado
+                    <input class="checkboxs Trava" id="NaoAplicadoTrava" type="radio" name="Trava da porta da doca" value="N/A">Não Aplicado
                 </div>
             </div>
         </label>
@@ -136,14 +149,14 @@
 
             <div class="centralizarAlternativasFlex">
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="SimGuardaCorpoFixo" type="radio" name="GuardaCorpoFixo" value="C">Conforme</div>
+                    <input class="checkboxs GuardaCorpoFixo" id="SimGuardaCorpoFixo" type="radio" name="Guarda corpo fixo" value="C">Conforme</div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="NaoGuardaCorpoFixo" type="radio" name="GuardaCorpoFixo" value="N/C">Não Conforme
+                    <input class="checkboxs GuardaCorpoFixo" id="NaoGuardaCorpoFixo" type="radio" name="Guarda corpo fixo" value="N/C">Não Conforme
                 </div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="NaoAplicadoGuardaCorpoFixo" type="radio" name="GuardaCorpoFixo" value="N/A">Não Aplicado
+                    <input class="checkboxs GuardaCorpoFixo" id="NaoAplicadoGuardaCorpoFixo" type="radio" name="Guarda corpo fixo" value="N/A">Não Aplicado
                 </div>
             </div>
         </label>
@@ -153,14 +166,14 @@
 
             <div class="centralizarAlternativasFlex">
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="SimGuardaCorpoLateral" type="radio" name="GuardaCorpoLateral" value="C">Conforme</div>
+                    <input class="checkboxs GuardaCorpoLateral" id="SimGuardaCorpoLateral" type="radio" name="Guarda corpo lateral" value="C">Conforme</div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="NaoGuardaCorpoLateral" type="radio" name="GuardaCorpoLateral" value="N/C">Não Conforme
+                    <input class="checkboxs GuardaCorpoLateral" id="NaoGuardaCorpoLateral" type="radio" name="Guarda corpo lateral" value="N/C">Não Conforme
                 </div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="NaoAplicadoGuardaCorpoLateral" type="radio" name="GuardaCorpoLateral" value="N/A">Não Aplicado
+                    <input class="checkboxs GuardaCorpoLateral" id="NaoAplicadoGuardaCorpoLateral" type="radio" name="Guarda corpo lateral" value="N/A">Não Aplicado
                 </div>
             </div>
         </label>
@@ -170,14 +183,14 @@
 
             <div class="centralizarAlternativasFlex">
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="SimVeiculoBomEstado" type="radio" name="VeiculoBomEstado" value="C">Conforme</div>
+                    <input class="checkboxs VeiculoBomEstado" id="SimVeiculoBomEstado" type="radio" name="Veiculo em bom estado" value="C">Conforme</div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="NaoVeiculoBomEstado" type="radio" name="VeiculoBomEstado" value="N/C">Não Conforme
+                    <input class="checkboxs VeiculoBomEstado" id="NaoVeiculoBomEstado" type="radio" name="Veiculo em bom estado" value="N/C">Não Conforme
                 </div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="NaoAplicadoVeiculoBomEstado" type="radio" name="VeiculoBomEstado" value="N/A">Não Aplicado
+                    <input class="checkboxs VeiculoBomEstado" id="NaoAplicadoVeiculoBomEstado" type="radio" name="Veiculo em bom estado" value="N/A">Não Aplicado
                 </div>
             </div>
         </label>
@@ -187,14 +200,14 @@
 
             <div class="centralizarAlternativasFlex">
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="SimDockLight" type="radio" name="DockLight" value="C">Conforme</div>
+                    <input class="checkboxs DockLight" id="SimDockLight" type="radio" name="DockLight" value="C">Conforme</div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="NaoDockLight" type="radio" name="DockLight" value="N/C">Não Conforme
+                    <input class="checkboxs DockLight" id="NaoDockLight" type="radio" name="DockLight" value="N/C">Não Conforme
                 </div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="NaoAplicadoDockLight" type="radio" name="DockLight" value="N/A">Não Aplicado
+                    <input class="checkboxs DockLight" id="NaoAplicadoDockLight" type="radio" name="DockLight" value="N/A">Não Aplicado
                 </div>
             </div>
         </label>
@@ -204,14 +217,14 @@
 
             <div class="centralizarAlternativasFlex">
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="SimCavaleteSaider" type="radio" name="CavaleteSaider" value="C">Conforme</div>
+                    <input class="checkboxs CavaleteSaider" id="SimCavaleteSaider" type="radio" name="CavaleteSaider" value="C">Conforme</div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="NaoCavaleteSaider" type="radio" name="CavaleteSaider" value="N/C">Não Conforme
+                    <input class="checkboxs CavaleteSaider" id="NaoCavaleteSaider" type="radio" name="CavaleteSaider" value="N/C">Não Conforme
                 </div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="NaoAplicadoCavaleteSaider" type="radio" name="CavaleteSaider" value="N/A">Não Aplicado
+                    <input class="checkboxs CavaleteSaider" id="NaoAplicadoCavaleteSaider" type="radio" name="CavaleteSaider" value="N/A">Não Aplicado
                 </div>
             </div>
         </label>
@@ -221,61 +234,56 @@
 
             <div class="centralizarAlternativasFlex">
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="SimVeiculoSaider" type="radio" name="VeiculoSaider" value="C">Conforme</div>
+                    <input class="checkboxs VeiculoSaider" id="SimVeiculoSaider" type="radio" name="VeiculoSaider" value="C">Conforme</div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="NaoVeiculoSaider" type="radio" name="VeiculoSaider" value="N/C">Não Conforme
+                    <input class="checkboxs VeiculoSaider" id="NaoVeiculoSaider" type="radio" name="VeiculoSaider" value="N/C">Não Conforme
                 </div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="NaoAplicadoVeiculoSaider" type="radio" name="VeiculoSaider" value="N/A">Não Aplicado
+                    <input class="checkboxs VeiculoSaider" id="NaoAplicadoVeiculoSaider" type="radio" name="VeiculoSaider" value="N/A">Não Aplicado
                 </div>
             </div>
         </label>
 
         <label for="Veiculo01eixo" id="Veiculo01eixo" class="CaixaDePergunta">
-            <span class="Pergunta">O veículo com 01(um) eixo está com o cavalo atrelado??</span>
+            <span class="Pergunta">O veículo com 01(um) eixo está com o cavalo atrelado?</span>
 
             <div class="centralizarAlternativasFlex">
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="SimVeiculo01eixo" type="radio" name="Veiculo01eixo" value="C">Conforme</div>
+                    <input class="checkboxs Veiculo01eixo" id="SimVeiculo01eixo" type="radio" name="Veiculo01eixo" value="C">Conforme</div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="NaoVeiculo01eixo" type="radio" name="Veiculo01eixo" value="N/C">Não Conforme
+                    <input class="checkboxs Veiculo01eixo" id="NaoVeiculo01eixo" type="radio" name="Veiculo01eixo" value="N/C">Não Conforme
                 </div>
 
                 <div class="AgrupadorDasOpcoes">
-                    <input class="checkboxs" id="NaoAplicadoVeiculo01eixo" type="radio" name="Veiculo01eixo" value="N/A">Não Aplicado
+                    <input class="checkboxs Veiculo01eixo" id="NaoAplicadoVeiculo01eixo" type="radio" name="Veiculo01eixo" value="N/A">Não Aplicado
                 </div>
             </div>
         </label>
 
-        <label for="QuestaoObs" id="QuestaoObs" class="CaixaDePergunta">
-            <span class="Pergunta">Observação</span>
-
-            <div class="centralizarAlternativasFlex">
-
-                <div class="AgrupadorDasOpcoes" id="agrupadorCampoObs">
-                    <textarea id="CampoDeObs" placeholder="Obs..." maxlength="579"></textarea>
-                </div>
+        <label for="QuestaoDesc" class="CaixaDePergunta">
+            <span>Descrição</span>
+            <div id="centralizarDesc">
             </div>
+            
+            <button class="botao" id="botaoDeAdicionarDesc">Adicionar Descrição</button>
+            
+            <button class="botao" id="botaoDeRemoverDesc">Remover Descrição</button>
         </label>
     </form>
 
-    <div class="centralizarButtonFlex"><button class="BotaoDeBaixar">Baixar relatório</button></div>
+    <div class="centralizarButtonFlex"><button class="botao" id="BotaoDeBaixar">Baixar relatório</button></div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.15.10/dist/sweetalert2.all.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
 
-    <script>
-        const botaoDeBaixar = document.querySelector('.BotaoDeBaixar');
-        botaoDeBaixar.addEventListener('click', () => {
-            swal.fire({
-                title: 'Modelo indisponível',
-                text: 'O modelo de relatório atual está em desenvolvimento. Por favor tente mais tarde ou contate o desenvolvedor.',
-                icon: 'error',
-                confirmButtonText: 'Ok'
-            })
-        })
-    </script>
+    <script src="../utils/utils.js"></script>
+    <script src="../utils/ManagerDescComponent.js"></script>
+    <script src="../utils/pdfGenerator/EmbarquePDFRepport.js"></script>
+    <script src="scripts/embarque.js"></script>
 </body>
 </html>

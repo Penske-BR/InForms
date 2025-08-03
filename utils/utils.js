@@ -48,7 +48,10 @@ class CurrentDate {
         let year = currentDate.getFullYear()
         let hour = String(currentDate.getHours()).padStart(2, "0")
         let minute = String(currentDate.getMinutes()).padStart(2, "0")
-        let formattedDate = `${day}/${month}/${year} - ${hour}:${minute}`
-        return formattedDate
+
+        return {
+          date: `${day}/${month}/${year}`,
+          time: `${hour}:${minute}`
+        }
     }
 }

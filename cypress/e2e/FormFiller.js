@@ -4,13 +4,30 @@ export default class FormFiller {
     }
     #checkFormPage(formModel){
         if(formModel === 'avaria'){
-            cy.get('#relatorioDeAvaria').click()
+            const avariaForm = new FillAvariaForm()
+            avariaForm.choseAvariaForm()
+            avariaForm.fillForm()
         }else if(formModel === 'embarque'){
-            cy.get('#relatorioDeEmbarque').click()
+            const embarqueForm = new FillEmbarqueForm()
+            embarqueForm.choseEmbarqueForm()
+            embarqueForm.fillForm()
         }else{
             throw new Error("Modelo de formulário inválido. Use 'avaria' ou 'embarque'.");
         }
     }
+
+    fill(formModel){
+        this.#visitHomePage()
+        this.#checkFormPage(formModel)
+    }
+}
+
+class FillAvariaForm {
+
+    choseAvariaForm(){
+        cy.get('#relatorioDeAvaria').click()
+    }
+
     #fillNFidentifiersFields(){
         cy.get('#NFCaixaDeTexto').type('640981')
         cy.get('#AgrupadorCaixaDeTexto').type('566981')
@@ -54,9 +71,7 @@ export default class FormFiller {
         cy.get('#BotaoDeBaixar').click()
     }
 
-    fillForm(formModel){
-        this.#visitHomePage()
-        this.#checkFormPage(formModel)
+    fillForm(){
         this.#fillNFidentifiersFields()
         this.#fillLocationFields()
         this.#fillProductFields()
@@ -64,6 +79,91 @@ export default class FormFiller {
         this.#fillActionField()
         this.#fillTransportFields()
         this.#fillDeparturetimeField()
+        this.#fillObsField() 
+    }
+}
+
+class FillEmbarqueForm {
+
+    choseEmbarqueForm(){
+        cy.get('#relatorioDeEmbarque').click()
+    }
+
+    #fillDocaField(){
+        cy.get('#DocaCaixaDeTexto').type('Doca 1')
+    }
+
+    #fillPlacaField(){
+        cy.get('#PlacaCaixaDeTexto').type('ABC-1234')
+    }
+
+    #fillChaveDoVeiculoField(){
+        cy.get('#SimChaveRecolhida').check()
+    }
+
+    #fillCalcoDeSegurancaField(){
+        cy.get('#NaoCalcoDeSeguranca').check()
+    }
+
+    #fillDocaLimpaField(){
+        cy.get('#NaoDocaLimpa').check()
+    }
+
+    #fillPlataformaField(){
+        cy.get('#SimPlataforma').check()
+    }
+
+    #fillTravaField(){
+        cy.get('#SimTrava').check()
+    }
+
+    #fillGuardaCorpoFixoField(){
+        cy.get('#SimGuardaCorpoFixo').check()
+    }
+
+    #fillGuardaCorpoLateralField(){
+        cy.get('#SimGuardaCorpoLateral').check()
+    }
+
+    #fillVeiculoBomEstadoField(){
+        cy.get('#SimVeiculoBomEstado').check()
+    }
+
+    #fillDockLightField(){
+        cy.get('#SimDockLight').check()
+    }
+
+    #fillCavaleteSaiderField(){
+        cy.get('#SimCavaleteSaider').check()
+    }
+
+    #fillVeiculoSaiderField(){
+        cy.get('#SimVeiculoSaider').check()
+    }
+
+    #fillVeiculo01eixoField(){
+        cy.get('#SimVeiculo01eixo').check()
+    }
+
+    #fillObsField(){
+        cy.get('#CampoDeObs').type('Tudo certo com a doca.')
+    }
+
+    fillForm(){
+        this.#fillDocaField()
+        this.#fillPlacaField()
+        this.#fillChaveDoVeiculoField()
+        this.#fillCalcoDeSegurancaField()
+        this.#fillDocaLimpaField()
+        this.#fillPlataformaField()
+        this.#fillTravaField()
+        this.#fillGuardaCorpoFixoField()
+        this.#fillGuardaCorpoLateralField()
+        this.#fillVeiculoBomEstadoField()
+        this.#fillDockLightField()
+        this.#fillCavaleteSaiderField()
+        this.#fillVeiculoSaiderField()
+        this.#fillVeiculo01eixoField()
         this.#fillObsField() 
     }
 }

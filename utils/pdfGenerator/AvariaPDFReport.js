@@ -1,5 +1,3 @@
-//TODO: Fazer com que o método GeneratePDFLayout respeite o OCP.
-
 class PDFLayout{
     #setFileSize() {
         const jsPDF = window.jspdf.jsPDF;    
@@ -77,7 +75,7 @@ class PDFLayout{
     }
 
     #setInfos(PDFReportObj) {
-        this.doc.text(PDFReportObj.CurrentDate, 65, 225)
+        this.doc.text((PDFReportObj.CurrentDate.date + " - " + PDFReportObj.CurrentDate.time), 65, 225)
         this.doc.line(65, 229, 220, 229)
         this.doc.text("N° da NF:  " + PDFReportObj.NF, 700, 225)
         this.doc.line(770, 229, 908, 229)
