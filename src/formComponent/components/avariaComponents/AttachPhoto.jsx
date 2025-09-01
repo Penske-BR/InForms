@@ -1,6 +1,7 @@
 import "../../../styles/formComponentStyles/attachPhoto.css"
 import ImageManager from "../../../utils/ImageManager.js"
 import { useEffect, useRef } from "react"
+import trashCan from "../../../assets/trash-can.png"
 
 export default function AttachPhoto({ setImageList}) {
   const inputRef = useRef(null)
@@ -37,7 +38,7 @@ export default function AttachPhoto({ setImageList}) {
         <label htmlFor="FileQuestion" id="FileQuestion" className="QuestionBox">
             <span className="Question">Anexar foto</span>
                     <button className="DeleteImgButton" id="DeleteImgButton" onClick={() => {deleteSelectedImg()}}>
-                        <img src="src\assets\trash-can.png" alt=""></img>
+                        <img src={trashCan} alt=""></img>
                     </button>
 
                     <button className="AttachPhotoButton" id="AttachPhotoButton">
